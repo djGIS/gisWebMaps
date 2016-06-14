@@ -17,30 +17,30 @@ var userLocationMarker = null;
 var markers = [];
 var markerCluster;
 var POIvisualFormato = [
-//[CLASE, TIPO, textoMenu, icono, infoWindowTexto],
-['EN RUTA', 'PEAJE', 'Peajes', 'http://maps.google.com/mapfiles/ms/icons/yellow.png', ' '],
-['EN RUTA', 'ESTACION DE SERVICIO', 'Estaciones de Servicio', 'http://maps.google.com/mapfiles/ms/icons/blue.png', ' '],
-['EN RUTA', 'PASO INTERNACIONAL', 'Pasos Internacionales', 'http://maps.google.com/mapfiles/ms/icons/yellow.png', ' '],
-['EN RUTA', 'CAJON AZUL', 'Cajones Azules CABA', 'http://maps.google.com/mapfiles/ms/icons/lightblue.png', ' '],
-['EN RUTA', 'PARQUE INDUSTRIAL', 'Parques Industriales','http://maps.google.com/mapfiles/ms/icons/purple.png', ' '],
-['EN RUTA', 'TERMINALES PORTURIAS', 'Terminales Portuarias','http://maps.google.com/mapfiles/ms/icons/purple.png', ' '],
-['PERMISOS', 'RTO/VTV', 'Revisión Técnica', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
-['PERMISOS', 'RUTA', 'RUTA', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
-['PERMISOS', 'FPT', 'LNH/Cursos COAP', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
-['PERMISOS', 'PSICOFISICO', 'Examen Psicofisico', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
-['PERMISOS', 'ADUANA', 'AFIP - Aduana', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
-['PERMISOS', 'TRANSPORTE ALIMENTOS', 'SENASA (Alimentos)', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
-['PERMISOS', 'VIALIDAD', 'Vialidad - Cargas Excepcionales', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
-['SERVICIOS', 'FADEEAC', 'FADEEAC (Afiliados)', 'http://maps.google.com/mapfiles/ms/icons/lightblue.png', ' '],
-['SERVICIOS', 'POLICIA', 'Comisarias', 'http://maps.google.com/mapfiles/ms/icons/blue.png', ' '],
-['SERVICIOS', 'TALLER', 'Talleres', 'http://maps.google.com/mapfiles/ms/icons/purple.png', ' ']
+	//[CLASE, TIPO, textoMenu, icono, infoWindowTexto],
+	['EN RUTA', 'PEAJE', 'Peajes', 'http://maps.google.com/mapfiles/ms/icons/yellow.png', ' '],
+	['EN RUTA', 'ESTACION DE SERVICIO', 'Estaciones de Servicio', 'http://maps.google.com/mapfiles/ms/icons/blue.png', ' '],
+	['EN RUTA', 'PASO INTERNACIONAL', 'Pasos Internacionales', 'http://maps.google.com/mapfiles/ms/icons/yellow.png', ' '],
+	['EN RUTA', 'CAJON AZUL', 'Cajones Azules CABA', 'http://maps.google.com/mapfiles/ms/icons/lightblue.png', ' '],
+	['EN RUTA', 'PARQUE INDUSTRIAL', 'Parques Industriales','http://maps.google.com/mapfiles/ms/icons/purple.png', ' '],
+	['EN RUTA', 'TERMINALES PORTURIAS', 'Terminales Portuarias','http://maps.google.com/mapfiles/ms/icons/purple.png', ' '],
+	['PERMISOS', 'RTO/VTV', 'Revisión Técnica', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
+	['PERMISOS', 'RUTA', 'RUTA', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
+	['PERMISOS', 'FPT', 'LNH/Cursos COAP', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
+	['PERMISOS', 'PSICOFISICO', 'Examen Psicofisico', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
+	['PERMISOS', 'ADUANA', 'AFIP - Aduana', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
+	['PERMISOS', 'TRANSPORTE ALIMENTOS', 'SENASA (Alimentos)', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
+	['PERMISOS', 'VIALIDAD', 'Vialidad - Cargas Excepcionales', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
+	['SERVICIOS', 'FADEEAC', 'FADEEAC (Afiliados)', 'http://maps.google.com/mapfiles/ms/icons/lightblue.png', ' '],
+	['SERVICIOS', 'POLICIA', 'Comisarias', 'http://maps.google.com/mapfiles/ms/icons/blue.png', ' '],
+	['SERVICIOS', 'TALLER', 'Talleres', 'http://maps.google.com/mapfiles/ms/icons/purple.png', ' ']
 ]; 
 var layers = []; 
 var dbRestriccionesImport = [];
 
 //Variables para funciones de ruteo
 var rendererOptions = {
-draggable: true
+	draggable: true
 };
 var directionsDisplay;
 var directionsService;
@@ -49,107 +49,73 @@ var routeBoxer = null;
 //var closestPoint = centrosRuta.length + 1;
 
 function getData(table) {
-var query = "SELECT LONGITUD, LATITUD, CLASE, TIPO, BANDERA, NOMBRE, DIRECCION, DIRECCION_ADD, LOCALIDAD, PROVINCIA, TELEFONO, HORARIOS, DIR_EMAIL, DIR_WEB, PRESTACIONES, NOTA, FOTO, FECHA_ACT, ESTADO_POI FROM " + table;
-var encodedQuery = encodeURIComponent(query);
+	var query = "SELECT LONGITUD, LATITUD, CLASE, TIPO, BANDERA, NOMBRE, DIRECCION, DIRECCION_ADD, LOCALIDAD, PROVINCIA, TELEFONO, HORARIOS, DIR_EMAIL, DIR_WEB, PRESTACIONES, NOTA, FOTO, FECHA_ACT, ESTADO_POI FROM " + table;
+	var encodedQuery = encodeURIComponent(query);
 
-// Construct the URL
-var url = ['https://www.googleapis.com/fusiontables/v1/query'];
-url.push('?sql=' + encodedQuery);
-url.push('&key=' + miftah);
-url.push('&callback=?');
+	// Construct the URL
+	var url = ['https://www.googleapis.com/fusiontables/v1/query'];
+	url.push('?sql=' + encodedQuery);
+	url.push('&key=' + miftah);
+	url.push('&callback=?');
 
-// Send the JSONP request using jQuery
-$.ajax({
-url: url.join(''),
-dataType: 'jsonp',
-success: function (data) {
-dbPOIimport = data['rows'];
-}
-});
+	// Send the JSONP request using jQuery
+	$.ajax({
+		url: url.join(''),
+		dataType: 'jsonp',
+		success: function (data) {
+			dbPOIimport = data['rows'];
+		}
+	});
 }
 
 function getRestricciones(table) {
-var query = "SELECT GEOMETRY, TIPO, JURISDICCION, NOMBRE FROM " + table;
-var encodedQuery = encodeURIComponent(query);
-var geometries = [];
+	var query = "SELECT GEOMETRY, TIPO, JURISDICCION, NOMBRE FROM " + table;
+	var encodedQuery = encodeURIComponent(query);
+	var geometries = [];
 
-// Construct the URL
-var url = ['https://www.googleapis.com/fusiontables/v1/query'];
-url.push('?sql=' + encodedQuery);
-url.push('&key=' + miftah);
-url.push('&callback=?');
+	// Construct the URL
+	var url = ['https://www.googleapis.com/fusiontables/v1/query'];
+	url.push('?sql=' + encodedQuery);
+	url.push('&key=' + miftah);
+	url.push('&callback=?');
 
-// Send the JSONP request using jQuery
-$.ajax({
-url: url.join(''),
-dataType: 'jsonp',
-success: function (data) {
-dbRestriccionesImport = data['rows'];
-for(var i in dbRestriccionesImport) {
-geometries[i] = dbRestriccionesImport[i][0]['geometries'];
-}
-alert(geometries[0]);
+	// Send the JSONP request using jQuery
+	$.ajax({
+		url: url.join(''),
+		dataType: 'jsonp',
+		success: function (data) {
+			dbRestriccionesImport = data['rows'];
+			for(var i in dbRestriccionesImport) {
+				geometries[i] = dbRestriccionesImport[i][0]['geometries'];
+			}
+		//alert(geometries[0]);
 
-}
-});
+		}
+	});
 }
 
 function getEstado(table) {
-var query = "SELECT GEOMETRY, RUTA, TRAMO, ESTADO FROM " + table;
-var encodedQuery = encodeURIComponent(query);
+	var query = "SELECT GEOMETRY, RUTA, TRAMO, ESTADO FROM " + table;
+	var encodedQuery = encodeURIComponent(query);
 
-// Construct the URL
-var url = ['https://www.googleapis.com/fusiontables/v1/query'];
-url.push('?sql=' + encodedQuery);
-url.push('&key=' + miftah);
-url.push('&callback=?');
+	// Construct the URL
+	var url = ['https://www.googleapis.com/fusiontables/v1/query'];
+	url.push('?sql=' + encodedQuery);
+	url.push('&key=' + miftah);
+	url.push('&callback=?');
 
-// Send the JSONP request using jQuery
-$.ajax({
-url: url.join(''),
-dataType: 'jsonp',
-success: function (data) {
-dbEstadoImport = data['rows'];
-alert(dbEstadoImport[0][0]);
-}
-});
-}
-
-function findClosest(userPosition, all) {
-var distAnt = 1000000;
-var distAct = 1000001;
-
-var latlngset;
-var tipo = document.getElementById("tipo").value;
-
-for (var i in all) { 
-if (tipo == 'CG')
-var cursos = all[i][11];
-else 
-var cursos = all[i][12];
-
-if (cursos == true) { 
-var latLngA = userPosition;
-var latLngB = new google.maps.LatLng(all[i][1], all[i][2]);
-distAct = google.maps.geometry.spherical.computeDistanceBetween (latLngA, latLngB);
-
-if (distAct < distAnt) {
-distAnt = distAct;
-closestPoint = i;
-} 
-}
+	// Send the JSONP request using jQuery
+	$.ajax({
+		url: url.join(''),
+		dataType: 'jsonp',
+		success: function (data) {
+			dbEstadoImport = data['rows'];
+			//alert(dbEstadoImport[0][0]);
+		}
+	});
 }
 
-//alert(distAnt + ', ' + all[closestPoint][4]); 
-latlngset = new google.maps.LatLng(all[closestPoint][1], all[closestPoint][2]);
 
-setMarkers(dbPOIimport)
-
-var latlngbounds = new google.maps.LatLngBounds( );
-latlngbounds.extend(userPosition);
-latlngbounds.extend(latlngset);
-map.fitBounds(latlngbounds);
-}
 
 function writeAddressName(latLng) {
 var geocoder = new google.maps.Geocoder();
