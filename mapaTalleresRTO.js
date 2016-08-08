@@ -330,7 +330,7 @@ ordenPOI = ordenarListaAlfabet(listaPOIordenar, 8, ordenPOI);
 //var puntoRef = new google.maps.LatLng(-34.610016, -58.414543);
 //ordenPOI = ordenarListaProxGeo(centrosRTO, puntoRef, ordenPOI);
 
-var textTemp = '<br><table width="100%" cellpadding="5px"><tr><th scope="col" width="10%" align="center" align="bottom"><b>CRI</b></th><th scope="col" width="30%" align="center" align="bottom"><b>DIRECCION</b></th><th scope="col" width="35%" align="center" align="bottom"><b>INFORMACION DE CONTACTO</b></th><th scope="col" width="25%" align="center" align="bottom"><b>HORARIOS DE ATENCION</b></th></tr>';
+var textTemp = '<br><table width="100%" cellpadding="5px"><tr><th scope="col" width="25%" align="center" align="bottom"><b>TALLER</b></th><th scope="col" width="25%" align="center" align="bottom"><b>DIRECCION</b></th><th scope="col" width="25%" align="center" align="bottom"><b>INFORMACION DE CONTACTO</b></th><th scope="col" width="25%" align="center" align="bottom"><b>HORARIOS DE ATENCION</b></th></tr>';
 
 for (var i = 0; i < ordenPOI.length; i++) {
 var a = ordenPOI[i];
@@ -338,7 +338,7 @@ if (rangoProv != listaPOIordenar[a][8]) {
 textTemp = textTemp + '<tr><td colspan="4" bgcolor=#003366><span style="color:white;"><b>' + listaPOIordenar[a][8] + '</b></span></td></tr>';
 rangoProv = listaPOIordenar[a][8];
 }
-textTemp = textTemp + '<tr><td style="border-bottom: thin solid;border-color: #003366;">' + listaPOIordenar[a][3] + '</td><td style="border-bottom: thin solid;border-color: #003366;">' + listaPOIordenar[a][5] + ' ' + listaPOIordenar[a][6] + '<br>' + listaPOIordenar[a][7] + ', ' + listaPOIordenar[a][8] + '</td><td style="border-bottom: thin solid;border-color: #003366;">' + listaPOIordenar[a][9] + '<br>' + listaPOIordenar[a][11] + '<br>' + listaPOIordenar[a][12] + '</td><td style="border-bottom: thin solid;border-color: #003366;">' + listaPOIordenar[a][10] + '</td></tr>';
+textTemp = textTemp + '<tr><td style="border-bottom: thin solid;border-color: #003366;">' + listaPOIordenar[a][4] + '</td><td style="border-bottom: thin solid;border-color: #003366;">' + listaPOIordenar[a][5] + ' ' + listaPOIordenar[a][6] + '<br>' + listaPOIordenar[a][7] + ', ' + listaPOIordenar[a][8] + '</td><td style="border-bottom: thin solid;border-color: #003366;">' + listaPOIordenar[a][9] + '<br>' + listaPOIordenar[a][11] + '<br>' + listaPOIordenar[a][12] + '</td><td style="border-bottom: thin solid;border-color: #003366;">' + listaPOIordenar[a][10] + '</td></tr>';
 }
 textTemp = textTemp + '</table>';
 
