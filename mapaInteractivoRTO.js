@@ -136,9 +136,9 @@ z++;
 switch(tipoPOI[x]) {
 case 'RTO/VTV':
 icono = 'http://maps.google.com/mapfiles/ms/icons/lightblue.png';
-content = '<div style="width:300px;padding-bottom: 5px"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;"><strong>RTO - CENTRO DE RECEPCIÓN DE INFORMACIÓN</strong></span></div>'
+content = '<div style="width:300px;padding-bottom: 5px"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;"><strong>TALLER DE RTO</strong></span></div>'
 content += '<div style="width:300px;padding-bottom: 5px"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;"><strong>' 
-+ bandera + ' - ' + nombre + '</strong></span></div>' 
++ nombre + '</strong></span></div>' 
 content += '<div style="width:300px;padding-bottom: 5px"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;">' + direccion + '</br>' + localidad + ', ' + provincia + '</span></div>'; 
 content += '<div style="width:300px;"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;">' + telefono + '</br>' + dir_email + '</br>' + dir_web + '</span></div>'; 
 latlngset = new google.maps.LatLng(lat, lng);
@@ -502,7 +502,7 @@ RTOmap = new google.maps.Map(document.getElementById('MapaRTO'),mapProp);
 // Controles de usuario
 buscadorControls;
 
-var tipoPOI = ['RTO'];
+var tipoPOI = ['RTO/VTV'];
 setMarkers(dbPOIimport, tipoPOI); 
 cargarListPanelRTO(RTOlistaPOI); 
 }
