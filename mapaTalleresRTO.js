@@ -135,7 +135,6 @@ z++;
 //switch para asignar formato a los marcadores y burbujas de información
 switch(tipoPOI[x]) {
 case 'RTO/VTV':
-alert("hello");
 icono = 'http://maps.google.com/mapfiles/ms/icons/lightblue.png';
 content = '<div style="width:300px;padding-bottom: 5px"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;"><strong>RTO - CENTRO DE RECEPCIÓN DE INFORMACIÓN</strong></span></div>'
 content += '<div style="width:300px;padding-bottom: 5px"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;"><strong>' 
