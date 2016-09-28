@@ -64,7 +64,10 @@ function getData(table) {
 		url: url.join(''),
 		dataType: 'jsonp',
 		success: function (data) {
-			dbPOIimport.push(data['rows']);
+			var dbTemp = data['rows'];
+			for (var i = 0; i < dbTemp.length; i++) {
+				dbPOIimport.push(dbTemp[i]);
+			}
 		}
 	});
 }
