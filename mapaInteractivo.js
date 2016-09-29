@@ -10,7 +10,7 @@ var vinculo_dbEESS = '1obPn7mFkffMcwMUrxb4mLGnFyBu8GJGUBgddupK9';
 var vinculo_dbRTP = '1bDkJ4DpLj2wBuuSMxWyiDT5FLMO52zz9wtlsoAU';
 var vinculo_dbRestricciones = '1MxNzFFtAKZpbHpmF07tUzqxmMBGN_fxdaaYEaAJz';
 var vinculo_dbPartesDNV = '1ApY8xmm_K_4OEErgX4SNRNDcj9Neruu3-t_U9vY';
-var miftah = 'AIzaSyBJtngqawEy_5cbLEDZVCu1f37_OhU-oDo';
+var miftah = 'AIzaSyD0HUWfODs_qxBvKpYO_iB9fwUkW86DHn8';
 
 var dbPOIimport = [];
 var infowindow = null;
