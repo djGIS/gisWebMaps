@@ -4,7 +4,7 @@
 // Fecha de Actualización : 09/12/2014
 
 var vinculo_dbPOI = '1i0Q7uVwWjJgw3cEg-dsAUnmhMPX2nzuLfkzgsNA';
-var miftah = 'AIzaSyBJtngqawEy_5cbLEDZVCu1f37_OhU-oDo';
+var miftah = 'AIzaSyC6xfeGzdTZhK8VB0M4-AwUXWMzsx1JFrM';
 
 // Variables de incialización de mapa
 var coordsBsAs = new google.maps.LatLng(-34.610016, -58.414543);
