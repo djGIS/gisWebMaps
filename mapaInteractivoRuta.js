@@ -1,7 +1,7 @@
 // script para Mapa Interactivo buscador de centros de RUTA
 //
 // Dept. de Asuntos Técnicos y Infraestructura - FADEEAC
-// Fecha de Actualización : 09/12/2014
+// Fecha de Actualización : 29/12/2016
 
 var vinculo_dbPOI = '1i0Q7uVwWjJgw3cEg-dsAUnmhMPX2nzuLfkzgsNA';
 var miftah = 'AIzaSyC6xfeGzdTZhK8VB0M4-AwUXWMzsx1JFrM';
@@ -33,7 +33,6 @@ var directionsService;
 var routePath = [];
 var routeBoxer = null;
 //var closestPoint = centrosRuta.length + 1;
-
 
 // Funciones de Carga de Datos desde las tablas externas
 
