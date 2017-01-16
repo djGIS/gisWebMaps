@@ -71,11 +71,59 @@ anchor: new google.maps.Point(16, 32),
 markers.push(marker);
 
 google.maps.event.addListener(marker, 'click', (function(marker, content) {
-return function() {
-infowindow.setContent(content);
-infowindow.open(map, marker);
-}
+	return function() {
+		infowindow.setContent(content);
+		infowindow.open(map, marker);
+	}
 })(marker, content));
+
+var markerRclickContent = document.createElement('div');	
+	
+	var para = document.createElement('p');
+	var texto = document.createTextNode('Usar este punto como origen');
+	para.appendChild(texto);
+	texto = document.createElement('span');
+	texto.innerHTML = '</br>';
+	para.appendChild(texto);
+	para.style.lineHeight = '50%';
+	para.onclick = function(){campoRClick(marker, 'origen');};
+	markerRclickContent.appendChild(para);
+	
+	para = document.createElement('p');
+	texto = document.createTextNode('Usar este punto como destino');
+	para.appendChild(texto);
+	texto = document.createElement('span');
+	texto.innerHTML = '</br>';
+	para.appendChild(texto);
+	para.style.lineHeight = '50%';
+	para.onclick = function(){campoRClick(marker, 'destino');};
+	markerRclickContent.appendChild(para);
+
+	para = document.createElement('p');
+	texto = document.createTextNode('Agregar este punto como hito');
+	para.appendChild(texto);
+	texto = document.createElement('span');
+	texto.innerHTML = '</br>';
+	para.appendChild(texto);
+	para.style.lineHeight = '50%';
+	para.onclick = function(){campoRClick(marker, 'hito');};
+	markerRclickContent.appendChild(para);
+		
+	para = document.createElement('p');
+	texto = document.createTextNode('Señalar un problema con los datos');
+	para.appendChild(texto);
+	para.style.lineHeight = '50%';
+	para.onclick = function(){comunicarProblema(marker);};
+	markerRclickContent.appendChild(para);
+	
+	
+google.maps.event.addListener(marker, 'rightclick', (function(marker, markerRclickContent) {
+	return function() {
+		infowindow.setContent(markerRclickContent);
+		infowindow.open(map, marker);
+	}
+})(marker, markerRclickContent));
+
 }
 
 function setMarkers(dbPOI) { 
