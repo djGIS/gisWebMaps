@@ -1,4 +1,3 @@
-<script type="text/javascript">
 //inicialización del objeto mapa
 var map;
 var mapId;
@@ -55,4 +54,3 @@ function fullscreenControls() {
 	
   map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controles);
 }
-</script>
