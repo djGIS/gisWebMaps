@@ -3,7 +3,7 @@
 // Dept. de Asuntos Técnicos y Infraestructura - FADEEAC
 // Fecha de Actualización : 29/12/2016
 
-var vinculo_dbPOI = '1i0Q7uVwWjJgw3cEg-dsAUnmhMPX2nzuLfkzgsNA';
+var vinculo_dbPOI = '1KKWAfz1a-1Zt2P0E5UoJLTIL7GmsRLA62tWn91EQ';
 var miftah = 'AIzaSyC6xfeGzdTZhK8VB0M4-AwUXWMzsx1JFrM';
 
 // Variables de incialización de mapa
