@@ -327,6 +327,7 @@ google.maps.event.addListener(directionsDisplay, 'directions_changed', function(
 computeTotalDistance(directionsDisplay.directions);
 directionsDisplay.setMap(map);
 directionsDisplay.setPanel(document.getElementById('indicaciones'));
+	sendRouteStats(directionsDisplay.getDirections());
 });
 
 //Codigo para grilla de distancia
@@ -489,6 +490,7 @@ directionsService.route(request, function(result, status) {
 if (status == google.maps.DirectionsStatus.OK) {
 //segRoute[0] = directionRequest(request);
 directionsDisplay.setDirections(result);
+//sendRouteStats(directionsDisplay.setDirections());
 routePath = result.routes[0].overview_path;
 myroute = result.routes[0];
 //for (i = 0; i < myroute.legs.length; i++) {
@@ -502,6 +504,14 @@ advertenciaPeaje(dbPOIimport);
 alert("Lo sentimos, no se pudo calcular una ruta entre los puntos ingresados.");
 }
 }); 
+}
+
+function sendRouteStats(result) {
+	var routeWP = [];
+	for (var i = 0; i < result.geocoded_waypoints.length; i++) {
+		routeWP.push(result.geocoded_waypoints[i].place_id);
+	}
+	dataLayer.obtenerIndicaciones = routeWP;
 }
 
 function computeTotalDistance(result) {
