@@ -6,6 +6,7 @@ var mapProp;
 
 //Archivos de Base de Datos
 var vinculo_dbPOI = '1i0Q7uVwWjJgw3cEg-dsAUnmhMPX2nzuLfkzgsNA';
+var vinculo_dbRUTA = '1KKWAfz1a-1Zt2P0E5UoJLTIL7GmsRLA62tWn91EQ';
 var vinculo_dbEESS = '1obPn7mFkffMcwMUrxb4mLGnFyBu8GJGUBgddupK9';
 var vinculo_dbRTP = '1bDkJ4DpLj2wBuuSMxWyiDT5FLMO52zz9wtlsoAU';
 var vinculo_dbRestricciones = '1MxNzFFtAKZpbHpmF07tUzqxmMBGN_fxdaaYEaAJz';
@@ -1226,6 +1227,7 @@ document.getElementById("HelpBuscador").style.display = 'none';
 // Funciones a ejecutar al cargar la pagina
 //google.maps.event.addDomListener(body, 'load', formControls);
 google.maps.event.addDomListener(window, 'load', getData(vinculo_dbPOI));
+google.maps.event.addDomListener(window, 'load', getData(vinculo_dbRUTA));
 google.maps.event.addDomListener(window, 'load', getData(vinculo_dbEESS));
 //google.maps.event.addDomListener(window, 'load', getRestricciones(vinculo_dbRestricciones));
 //google.maps.event.addDomListener(window, 'load', getEstado(vinculo_dbPartesDNV));
