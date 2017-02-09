@@ -508,11 +508,12 @@ alert("Lo sentimos, no se pudo calcular una ruta entre los puntos ingresados.");
 }
 
 function sendRouteStats(result) {
-	var routeWP = [];
+	var routeWP = '';
 	for (var i = 0; i < result.geocoded_waypoints.length; i++) {
-		routeWP.push(result.geocoded_waypoints[i].place_id);
+		routeWP += (result.geocoded_waypoints[i].place_id + ' | ');
 	}
-	dataLayer.obtenerIndicaciones = routeWP;
+	routeWP = routeWP.substring(0, routeWP.length - 3);
+	dataLayer.push({'obtenerIndicaciones': routeWP});
 }
 
 function computeTotalDistance(result) {
