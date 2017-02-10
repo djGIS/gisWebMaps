@@ -513,7 +513,6 @@ function sendRouteStats(result) {
 		routeWP += (result.geocoded_waypoints[i].place_id + ' | ');
 	}
 	routeWP = routeWP.substring(0, routeWP.length - 3);
-	alert(routeWP);
 	dataLayer.push({'obtenerIndicaciones': routeWP});
 }
 
