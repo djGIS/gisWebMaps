@@ -198,8 +198,8 @@ function calcularPeaje2(result, indice) {
 	var myroute = result.routes[indice];
 	
 	var contents = "";
-	contents += '<div style="float:left; width:101px; padding-right: 5px;"><span>Estación</span></div>';
-	contents += '<div style="float:left; width:75px;"><span style="text-align: center">Hora Pico</span></div>';
+	contents += '<div style="float:left; width:101px; padding-right: 5px;">Estación</div>';
+	contents += '<div style="float:left; width:75px; text-align: center;">Hora Pico</div>';
 	contents += '<div style="float:left; clear:right;"><select name="ejesSelect" onchange="getEjes(this)" style="border: 1px solid Silver;border-radius: 2px;height:21px;padding-left:5px;padding-right:5px; width:108px;"><option value="ej2">2</option><option value="ej3">3</option><option value="ej4">4</option><option value="ej5" selected="true">5</option><option value="ej6">6</option></select></div>';
 	
 	for (var i = 0; i < dbPOIimport.length; i++) {
@@ -278,7 +278,7 @@ function calcularPeaje2(result, indice) {
 	contents += '<div class="ej4" style="float:left; width:54px; height:100%; text-align: right; display:none;">$ ' + ejesTotal.ej4 + '</div><div class="ej4" style="float:left; width:54px; height:100%; text-align: right; display:none; clear:right;"> </div>';
 	contents += '<div class="ej5" style="float:left; width:54px; height:100%; text-align: right; display:block;">$ ' + ejesTotal.e5 + '</div><div class="ej5" style="float:left; width:54px; height:100%; text-align: right; display:block; clear:right;"> </div>';
 	contents += '<div class="ej6" style="float:left; width:54px; height:100%; text-align: right; display:none;">$ ' + ejesTotal.ej6 + '</div><div class="ej6" style="float:left; width:54px; height:100%; text-align: right; display:none; clear:right;"> </div>';
-		
+	alert(contents);	
 //alert(peajesPasados[0][5]); 
 //contents += '</table>';
 document.getElementById('peajes').innerHTML = "";
