@@ -37,10 +37,10 @@ function initMenu() {
 	panelLatInfo.appendChild(panelLatMinimize);
 	
 	var controles = document.createElement('input');
-		controles.type = 'button';
-		controles.id = 'panelLatMinMax';
-		controles.style.cssText = 'border: 0px solid;border-radius: 2px;height:10px;width:338px;background-image:url("http://www.fadeeac.org.ar/wp-content/uploads/2017/01/double-arrow-up-512.png");background-position:center;background-size:8px;background-repeat:no-repeat;background-color: white;';
-		controles.onclick = function(){panelMinMax(this);};
+	controles.type = 'button';
+	controles.id = 'panelLatMinMax';
+	controles.style.cssText = 'border: 0px solid;border-radius: 2px;height:10px;width:338px;background-image:url("http://www.fadeeac.org.ar/wp-content/uploads/2017/01/double-arrow-up-512.png");background-position:center;background-size:8px;background-repeat:no-repeat;background-color: white;';
+	controles.onclick = function(){panelMinMax(this);};
 	panelLatMinimize.appendChild(controles);
 	
 	for (var i = 0; i < menuItems.length; i++) {
@@ -145,7 +145,7 @@ c.width = '78%';
 controles = document.createElement('span');
 var texto = document.createTextNode(POIvisualFormato[j][2]);
 controles.appendChild(texto);
-controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
+//controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
 c.appendChild(controles);
 
 c = r.insertCell(2);
@@ -163,7 +163,7 @@ capasContainer.appendChild(t);
 controles = document.createElement('div');
 var texto = document.createTextNode('Estado de Rutas y Restricciones');
 controles.appendChild(texto);
-controles.style.cssText = 'font-weight:bold;font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro;padding-top:5px';
+controles.style.cssText = 'padding-top:5px';//font-weight:bold;font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro;
 capasContainer.appendChild(controles); 
 
 var KMLselector = document.createElement('select');
@@ -183,7 +183,7 @@ c = r.insertCell(1);
 controles = document.createElement('span');
 var texto = document.createTextNode('Red de Tránsito Pesado');
 controles.appendChild(texto);
-controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
+//controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
 c.appendChild(controles);
 
 r = t.insertRow(1); 
@@ -200,7 +200,7 @@ c = r.insertCell(1);
 controles = document.createElement('span');
 var texto = document.createTextNode('Restricciones de Tránsito');
 controles.appendChild(texto);
-controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
+//controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
 c.appendChild(controles);
 
 r = t.insertRow(2); 
@@ -217,7 +217,7 @@ c = r.insertCell(1);
 controles = document.createElement('span');
 var texto = document.createTextNode('Estado de Rutas - DNV');
 controles.appendChild(texto);
-controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
+//controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
 c.appendChild(controles);
 
 //KMLselector.id = 'selectKML';
@@ -236,7 +236,7 @@ capasContainer.appendChild(t);
 controles = document.createElement('div');
 var texto = document.createTextNode('Tramites y Permisos');
 controles.appendChild(texto);
-controles.style.cssText = 'font-weight:bold;font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro;padding-top:5px';
+controles.style.cssText = 'padding-top:5px';//font-weight:bold;font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro;padding-top:5px';
 capasContainer.appendChild(controles); 
 
 t = document.createElement('table');
@@ -258,7 +258,7 @@ c.width = '78%';
 controles = document.createElement('span');
 var texto = document.createTextNode(POIvisualFormato[j][2]);
 controles.appendChild(texto);
-controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
+//controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
 c.appendChild(controles);
 
 c = r.insertCell(2);
@@ -276,7 +276,7 @@ capasContainer.appendChild(t);
 controles = document.createElement('div');
 var texto = document.createTextNode('Servicios');
 controles.appendChild(texto);
-controles.style.cssText = 'font-weight:bold;font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro;padding-top:5px';
+controles.style.cssText = 'padding-top:5px';//'font-weight:bold;font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro;padding-top:5px';
 capasContainer.appendChild(controles); 
 
 t = document.createElement('table');
@@ -298,7 +298,7 @@ c.width = '78%';
 controles = document.createElement('span');
 var texto = document.createTextNode(POIvisualFormato[j][2]);
 controles.appendChild(texto);
-controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
+//controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
 c.appendChild(controles);
 
 c = r.insertCell(2);
@@ -344,7 +344,7 @@ function geoLocControl(tipo) {
 	return controles;
 }
 
-var direccionTxtCSS = 'float:right;border: 1px solid Silver;border-radius: 2px;height:21px;width:260px;padding-left:5px;padding-right:5px;';
+var direccionTxtCSS = 'float:right;border: 1px solid Silver;border-radius: 2px;height:25px;width:260px;padding-left:5px;padding-right:5px;';
 var wideButtonCSS = 'border: 1px solid Silver;border-radius: 2px;height:25px;width:302px;background-color: LightSteelBlue;margin-top:10px;';
 
 function busquedaControls() {
@@ -383,35 +383,35 @@ return outerContainer;
 }
 
 function ruteoControls() {
-// Inputs de usuario para busqueda de dirección
-var container = document.createElement('div');
-container.id = 'ruteoInputs';
+	// Inputs de usuario para busqueda de dirección
+	var container = document.createElement('div');
+	container.id = 'ruteoInputs';
 
-var controles = geoLocControl('origen');
-container.appendChild(controles);
+	var controles = geoLocControl('origen');
+	container.appendChild(controles);
 
-controles = document.createElement('input');
-controles.type = 'text';
-controles.id = 'origen';
-controles.placeholder = 'Origen : Introduce una ubicación';
-controles.statsValue = null;
-controles.geoLocStatus = null;
-controles.style.cssText = direccionTxtCSS;
-controles.onchange = function(){codeAddress(this);};
-container.appendChild(controles);
-var autocomplete = new google.maps.places.Autocomplete((controles), { types: ['geocode'] });
+	controles = document.createElement('input');
+	controles.type = 'text';
+	controles.id = 'origen';
+	controles.placeholder = 'Origen : Introduce una ubicación';
+	controles.statsValue = null;
+	controles.geoLocStatus = null;
+	controles.style.cssText = direccionTxtCSS;
+	controles.onchange = function(){codeAddress(this);};
+	container.appendChild(controles);
+	var autocomplete = new google.maps.places.Autocomplete((controles), { types: ['geocode'] });
 
-controles = document.createElement('input');
-controles.type = 'button';
-controles.id = 'AddHito0';
-controles.value = '+';
-controles.style.cssText = 'margin-left:276px;margin-top:5px;margin-bottom:5px;border: 1px solid Silver;border-radius: 2px;width:25px;height:25px;background-color: white;';
-controles.onclick = function(){addHito();};
-container.appendChild(controles);
+	controles = document.createElement('input');
+	controles.type = 'button';
+	controles.id = 'AddHito0';
+	controles.value = '+';
+	controles.style.cssText = 'margin-left:276px;margin-top:5px;margin-bottom:5px;border: 1px solid Silver;border-radius: 2px;width:25px;height:25px;background-color: white;';
+	controles.onclick = function(){addHito();};
+	container.appendChild(controles);
 
-controles = document.createElement('span');
-controles.id = 'Hitos';
-container.appendChild(controles);
+	controles = document.createElement('span');
+	controles.id = 'Hitos';
+	container.appendChild(controles);
 
 controles = geoLocControl('destino');
 container.appendChild(controles);
@@ -435,7 +435,7 @@ container.appendChild(opciones);
 controles = document.createElement('div');
 var texto = document.createTextNode('Opciones de Ruteo');
 controles.appendChild(texto);
-controles.style.cssText = 'font-weight:bold;font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro;padding-top:5px';
+controles.style.cssText = 'padding-top:5px';//font-weight:bold;font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro;
 opciones.appendChild(controles);
 
 var c, r, t;
@@ -453,7 +453,7 @@ c = r.insertCell(1);
 controles = document.createElement('span');
 var texto = document.createTextNode('Mostrar solamente servicios alrededor del itinerario (hasta ');
 controles.appendChild(texto);
-controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
+//controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
 c.appendChild(controles);
 
 controles = document.createElement('input');
@@ -469,7 +469,7 @@ c.appendChild(controles);
 controles = document.createElement('span');
 var texto = document.createTextNode(' km).');
 controles.appendChild(texto);
-controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
+//controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
 c.appendChild(controles);
 
 r = t.insertRow(1); 
@@ -484,7 +484,7 @@ c = r.insertCell(1);
 controles = document.createElement('span');
 var texto = document.createTextNode('Optimizar el ruteo a través de las paradas indicadas.');
 controles.appendChild(texto);
-controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
+//controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
 c.appendChild(controles);
 
 opciones.appendChild(t);
@@ -508,36 +508,37 @@ container.appendChild(controles);
 return container;
 }
 
+//crear contenedores para visualicación de la información de ruteo
 function ruteoInfo() {
-var container = document.createElement('div');
-container.id = 'ruteoInfo';
+	var container = document.createElement('div');
+	container.id = 'ruteoInfo';
 
-var infoArea = document.createElement('div');
-infoArea.id = 'tCamion';
-infoArea.style.cssText = 'border: 1px solid Silver; margin-top: 10px; margin-bottom: 5px;padding:5px;';//'background:rgba(255,255,255,0.75)';
-//infoArea.style.maxHeight = '100px'; 
-infoArea.style.display = 'none';
-infoArea.style.overflowY = 'auto';
-container.appendChild(infoArea);
+	var infoArea = document.createElement('div');
+	infoArea.id = 'tCamion';
+	infoArea.style.cssText = 'border: 1px solid Silver; margin-top: 10px; margin-bottom: 5px;padding:5px;';//'background:rgba(255,255,255,0.75)';
+	//infoArea.style.maxHeight = '100px'; 
+	infoArea.style.display = 'none';
+	infoArea.style.overflowY = 'auto';
+	container.appendChild(infoArea);
 
 	infoArea = document.createElement('div');
 	infoArea.id = 'indicaciones';
 	infoArea.style.display = 'none';
-//infoArea.style.cssText = 'background:rgba(255,255,255,0.75)';
-//infoArea.style.maxHeight = '250px'; 
-//infoArea.style.overflowY = 'scroll';
-//; maxHeight:250px; overflowY:scroll';
+	//infoArea.style.cssText = 'background:rgba(255,255,255,0.75)';
+	//infoArea.style.maxHeight = '250px'; 
+	//infoArea.style.overflowY = 'scroll';
+	//; maxHeight:250px; overflowY:scroll';
 	container.appendChild(infoArea);
 
-var infoArea = document.createElement('div');
-infoArea.id = 'peajes';
-infoArea.style.cssText = 'border: 1px solid Silver; margin-top: 10px; margin-bottom: 5px;padding:5px;';//'background:rgba(255,255,255,0.75)';
-//infoArea.style.maxHeight = '100px'; 
-//infoArea.style.display = 'none';
-infoArea.style.overflowY = 'auto';
-container.appendChild(infoArea);
+	var infoArea = document.createElement('div');
+	infoArea.id = 'peajes';
+	infoArea.style.cssText = 'border: 1px solid Silver; margin-top: 10px; margin-bottom: 5px;padding:5px;';//'background:rgba(255,255,255,0.75)';
+	//infoArea.style.maxHeight = '100px'; 
+	infoArea.style.display = 'none';
+	infoArea.style.overflowY = 'auto';
+	container.appendChild(infoArea);
 
-return container;
+	return container;
 }
 
 function opcionesControls() {
