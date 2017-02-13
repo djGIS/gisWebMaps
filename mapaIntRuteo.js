@@ -31,7 +31,6 @@ function obtenerDirecciones() {
 	});
 			
 	google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
-		//geocodificarId(directionsDisplay.getDirections());
 		calcularTconduccion(directionsDisplay.getDirections(),directionsDisplay.getRouteIndex());
 		//if (document.getElementById('applygrid').checked == true) {
 			//aplicarGrilla(document.getElementById('gridsize').value);
@@ -42,8 +41,6 @@ function obtenerDirecciones() {
 		sendRouteStats();
 	});
 	
-	
-
 	var origen = tratarDireccionInput(document.getElementById("origen").value);
 	var destino = tratarDireccionInput(document.getElementById("destino").value);
 
@@ -79,9 +76,7 @@ function obtenerDirecciones() {
 
 	directionsService.route(request, function(result, status) {
 		if (status == google.maps.DirectionsStatus.OK) {
-		//alert(result.geocoded_waypoints.length);
 			directionsDisplay.setDirections(result);
-			//alert(directionsDisplay.geocoded_waypoints[0].status);
 		} else {
 			alert("Lo sentimos, no se pudo calcular una ruta entre los puntos ingresados.");
 		}
@@ -105,47 +100,46 @@ function tratarDireccionInput(dirInput) {
 }
 
 function computeTotalDistance(result) {
-var total = 0;
-var myroute = result.routes[0];
-for (var i = 0; i < myroute.legs.length; i++) {
-total += myroute.legs[i].distance.value;
-}
-total = total / 1000.
+	var total = 0;
+	var myroute = result.routes[0];
+	
+	for (var i = 0; i < myroute.legs.length; i++) {
+		total += myroute.legs[i].distance.value;
+	}
+	total = total / 1000.
 }
 
 function aplicarGrilla(distGrilla) {
-//var distGrilla = 10; // km
-var boxes = routeBoxer.box(routePath, distGrilla);
+	//var distGrilla = 10; // km
+	var boxes = routeBoxer.box(routePath, distGrilla);
 
-if (routePath != null && markers.length > 0) {
-for (var a = 0; a < markers.length; a++) {
-var boundsTest = false;
-for (var i = 0; i < boxes.length; i++) {
-var bounds = boxes[i];
-if (bounds.contains(markers[a].position)) {
-boundsTest = true;
-}
-}
-if (boundsTest != true)
-markers[a].setMap(null)
-}
-}
+	if (routePath != null && markers.length > 0) {
+	for (var a = 0; a < markers.length; a++) {
+		var boundsTest = false;
+		for (var i = 0; i < boxes.length; i++) {
+			var bounds = boxes[i];
+			if (bounds.contains(markers[a].position)) {
+				boundsTest = true;
+			}
+		}
+		if (boundsTest != true) {
+			markers[a].setMap(null);
+		}
+	}
 }
 
 function peajeSelecEjes(fuente) {
-alert(fuente.value);
-for (var i = 1; i < 8; i++) {
-if (i == fuente.value) {
-document.getElementById("PeajeCol" + i.toString()).display = 'block';
-} else {
-document.getElementById("PeajeCol" + i).display = 'none';
+	alert(fuente.value);
+	for (var i = 1; i < 8; i++) {
+		if (i == fuente.value) {
+			document.getElementById("PeajeCol" + i.toString()).display = 'block';
+		} else {
+			document.getElementById("PeajeCol" + i).display = 'none';
+		}
+	}
 }
-}
-}
-
 
 var dbTarifasPeajes = [];
-
 //cargar base de datos de POI desde fusion tables
 function getDataPeajes(table) {
 	var query = "SELECT * FROM " + table;
@@ -201,8 +195,6 @@ function cargarTarifas() {
 			}
 		} 
 	}
-	
-	
 }
 
 function getEjes(fuente) {
@@ -235,8 +227,8 @@ function calcularPeaje2(result, indice) {
 	var myroute = result.routes[indice];
 	var contents = ""; //'<div style="width:302px; height:50px;"><div style="float:left; width:175px; height:100%;"><p style="text-align: right">Seleccionar el tipo de vehículo:</p></div>';
 		
-		contents += '<div style="float:left; width:101px; padding-right: 5px;"><p>Estación</p></div>';
-		contents +=	'<div style="float:left; width:75px;"><p style="text-align: center">Hora Pico</p></div>';
+		contents += '<div style="float:left; width:101px; padding-right: 5px;"><span>Estación</span></div>';
+		contents +=	'<div style="float:left; width:75px;"><span style="text-align: center">Hora Pico</span></div>';
 		contents += '<div style="float:left; clear:right;"><select name="ejesSelect" onchange="getEjes(this)" style="float:left;border: 1px solid Silver;border-radius: 2px;height:21px;padding-left:5px;padding-right:5px; width:108px; clear: right;"><option value="ej2">2</option><option value="ej3">3</option><option value="ej4">4</option><option value="ej5" selected="true">5</option><option value="ej6">6</option></select></div>';
 		//contents +=	'<div class="ej2" style="float:left; width:100px; display:none;"><p style="text-align: center">2 Ejes</p></div>';
 		//contents +=	'<div class="ej3" style="float:left; width:100px; display:none;"><p style="text-align: center">3 Ejes</p></div>';
@@ -295,11 +287,11 @@ function calcularPeaje2(result, indice) {
 				//contents += '<div style="width:302px; height:50px;">';
 				contents += '<div style="float:left; width:101px; height:100%; padding-right: 5px;"><p>' + dbPeajes[a][5] + '</p></div>';
 				contents +=	'<div style="float:left; width:75px; height:100%;"><p style="text-align: center">' + dbPeajes[a][15].horaPico + '</p></div>';
-				contents +=	'<div class="ej2" style="float:left; width:55px; height:100%; display:none;"><p style="text-align: right">$ ' + dbPeajes[a][15].ej2.valle + '</p></div><div class="ej2" style="float:left; width:55px; height:100%; display:none;"><p style="text-align: right">$ ' + dbPeajes[a][15].ej2.pico + '</p></div>';
-				contents +=	'<div class="ej3" style="float:left; width:55px; height:100%; display:none;"><p style="text-align: right">$ ' + dbPeajes[a][15].ej3.valle + '</p></div><div class="ej3" style="float:left; width:55px; height:100%; display:none;"><p style="text-align: right">$ ' + dbPeajes[a][15].ej3.pico + '</p></div>';
-				contents +=	'<div class="ej4" style="float:left; width:55px; height:100%; display:none;"><p style="text-align: right">$ ' + dbPeajes[a][15].ej4.valle + '</p></div><div class="ej4" style="float:left; width:55px; height:100%; display:none;"><p style="text-align: right">$ ' + dbPeajes[a][15].ej4.pico + '</p></div>';
-				contents +=	'<div class="ej5" style="float:left; width:55px; height:100%; display:block;"><p style="text-align: right">$ ' + dbPeajes[a][15].ej5.valle + '</p></div><div class="ej5" style="float:left; width:55px; height:100%; display:block;"><p style="text-align: right">$ ' + dbPeajes[a][15].ej5.pico + '</p></div>';
-				contents +=	'<div class="ej6" style="float:left; width:55px; height:100%; display:none;"><p style="text-align: right">$ ' + dbPeajes[a][15].ej6.valle + '</p></div><div class="ej6" style="float:left; width:55px; height:100%; display:none; clear:right;"><p style="text-align: right">$ ' + dbPeajes[a][15].ej6.pico + '</p></div>';
+				contents +=	'<div class="ej2" style="float:left; width:55px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej2.valle + '</span></div><div class="ej2" style="float:left; width:55px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej2.pico + '</span></div>';
+				contents +=	'<div class="ej3" style="float:left; width:55px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej3.valle + '</span></div><div class="ej3" style="float:left; width:55px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej3.pico + '</span></div>';
+				contents +=	'<div class="ej4" style="float:left; width:55px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej4.valle + '</span></div><div class="ej4" style="float:left; width:55px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej4.pico + '</span></div>';
+				contents +=	'<div class="ej5" style="float:left; width:55px; height:100%; display:block;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej5.valle + '</span></div><div class="ej5" style="float:left; width:55px; height:100%; display:block;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej5.pico + '</span></div>';
+				contents +=	'<div class="ej6" style="float:left; width:55px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej6.valle + '</span></div><div class="ej6" style="float:left; width:55px; height:100%; display:none; clear:right;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej6.pico + '</span></div>';
 				//alert(ejesTotal.ej5 + Number(dbPeajes[a][15].ej5.valle));
 				ejesTotal.ej2 += Number(dbPeajes[a][15].ej2.valle);
 				ejesTotal.ej3 += Number(dbPeajes[a][15].ej3.valle);
@@ -331,68 +323,46 @@ document.getElementById('peajes').style.display = '';
 }
 
 function calcularTconduccion(result, indice) {
-var vGoogle = 0;
-var vCalculada = 0;
-var vMax = 80 * 3.6;
-var vFactor = 0.9;
-var cFactor = 35 / 100000;
-var cUrbano = 1.1;
-var cCalculada = 0;
-var cTotal = 0;
-var tCalculada = 0;
-var tParcial = 0;
-var tTotal = 0;
-var dTotal = 0;
-var myroute = result.routes[indice];
+	var vGoogle = 0;
+	var vCalculada = 0;
+	var vMax = 80 * 3.6;
+	var vFactor = 0.9;
+	var cFactor = 35 / 100000;
+	var cUrbano = 1.1;
+	var cCalculada = 0;
+	var cTotal = 0;
+	var tCalculada = 0;
+	var tParcial = 0;
+	var tTotal = 0;
+	var dTotal = 0;
+	var myroute = result.routes[indice];
 
+	for (var i = 0; i < myroute.legs.length; i++) {
+		for (var j = 0; j < myroute.legs[i].steps.length; j++) {
+			dTotal += myroute.legs[i].steps[j].distance.value;
+			vGoogle = myroute.legs[i].steps[j].distance.value / myroute.legs[i].steps[j].duration.value;
+			if (vGoogle > vMax) 
+				vGoogle = vMax;
+			vCalculada = vFactor * vGoogle;
+			tCalculada = myroute.legs[i].steps[j].distance.value / vCalculada;
+			tParcial += tCalculada;
+			tTotal += tCalculada;
 
-
-for (var i = 0; i < myroute.legs.length; i++) {
-	for (var j = 0; j < myroute.legs[i].steps.length; j++) {
-		dTotal += myroute.legs[i].steps[j].distance.value;
-		vGoogle = myroute.legs[i].steps[j].distance.value / myroute.legs[i].steps[j].duration.value;
-		if (vGoogle > vMax) 
-			vGoogle = vMax;
-		vCalculada = vFactor * vGoogle;
-		tCalculada = myroute.legs[i].steps[j].distance.value / vCalculada;
-		tParcial += tCalculada;
-		tTotal += tCalculada;
-
-//alert(tTotal / 3600);
-//if (tParcial > 16200) {
-// Place marker
-//var marker = new google.maps.Marker({
-//map: map,
-//icon: 'http://maps.google.com/mapfiles/kml/pal3/icon52.png',
-//position: myroute.legs[i].steps[j].start_location
-//}); 
-//var texto = 
-//addHito();
-//		document.getElementById('hito' + counterHitos).value = results[1].formatted_address;
-//geocodeLatLng(myroute.legs[i].steps[j].start_location);
-//alert(texto);
-//tParcial = tCalculada;
-//tTotal += 2700;
-//}
-
-if (vCalculada > 60) { cCalculada = myroute.legs[i].steps[j].distance.value * cFactor; }
-else { cCalculada = myroute.legs[i].steps[j].distance.value * cFactor * cUrbano; }
-cTotal = cTotal + cCalculada;
-
-//alert(myroute.legs[i].steps[j].distance.value + " " + myroute.legs[i].steps[j].duration.value + " " + total);
-//total += myroute.legs[i].distance.value;
+			if (vCalculada > 60) { cCalculada = myroute.legs[i].steps[j].distance.value * cFactor; }
+			else { cCalculada = myroute.legs[i].steps[j].distance.value * cFactor * cUrbano; }
+			cTotal = cTotal + cCalculada;
+		}
 	}
-}
-//total = total / 1000.
-dTotal = Math.round(dTotal / 100) / 10;
-tTotal = formatearTiempo(tTotal);
-//alert(dTotal + "km, " + tTotal + "horas, " + cTotal + "L combustible");
 
-var contents =  '<img src="http://www.fadeeac.org.ar/wp-content/uploads/2017/01/miCamion.png" style="height:30px;width:30px;float:left;">';
+	dTotal = Math.round(dTotal / 100) / 10;
+	tTotal = formatearTiempo(tTotal);
+
+	var contents =  '<img src="http://www.fadeeac.org.ar/wp-content/uploads/2017/01/miCamion.png" style="height:30px;width:30px;float:left;">';
 	contents += '<span style="float:right;width:250px;">Distancia total: ' + dTotal + ' km</br>Tiempo estimado de conducción: ' + tTotal + '</span>';
-document.getElementById('tCamion').innerHTML = "";
-document.getElementById('tCamion').innerHTML = contents;
-document.getElementById('tCamion').style.display = 'block';
+
+	document.getElementById('tCamion').innerHTML = "";
+	document.getElementById('tCamion').innerHTML = contents;
+	document.getElementById('tCamion').style.display = 'block';
 }
 
 function formatearTiempo(tImput) { 
