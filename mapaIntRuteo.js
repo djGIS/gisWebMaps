@@ -250,13 +250,13 @@ function calcularPeaje2(result, indice) {
 			var result = google.maps.geometry.poly.containsLocation(point, r);
 			if (result == true) {
 				//contents += '<div style="width:302px; height:50px;">';
-				contents += '<div style="float:left; width:101px; height:100%; padding-right: 5px; clear:left;"><span>' + dbPeajes[a][5] + '</span></div>';
-				contents += '<div style="float:left; width:75px; height:100%;"><span style="text-align: center">' + dbPeajes[a][15].horaPico + '</span></div>';
-				contents += '<div class="ej2" style="float:left; width:54px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej2.valle + '</span></div><div class="ej2" style="float:left; width:54px; height:100%; display:none; clear:right;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej2.pico + '</span></div>';
-				contents += '<div class="ej3" style="float:left; width:54px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej3.valle + '</span></div><div class="ej3" style="float:left; width:54px; height:100%; display:none; clear:right;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej3.pico + '</span></div>';
-				contents += '<div class="ej4" style="float:left; width:54px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej4.valle + '</span></div><div class="ej4" style="float:left; width:54px; height:100%; display:none; clear:right;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej4.pico + '</span></div>';
-				contents += '<div class="ej5" style="float:left; width:54px; height:100%; display:block;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej5.valle + '</span></div><div class="ej5" style="float:left; width:54px; height:100%; display:block; clear:right;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej5.pico + '</span></div>';
-				contents += '<div class="ej6" style="float:left; width:54px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej6.valle + '</span></div><div class="ej6" style="float:left; width:54px; height:100%; display:none; clear:right;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej6.pico + '</span></div>';
+				contents += '<div style="float:left; width:101px; height:100%; padding-right: 5px; clear:left;">' + dbPeajes[a][5] + '</div>';
+				contents += '<div style="float:left; width:75px; height:100%; text-align: center;">' + dbPeajes[a][15].horaPico + '</div>';
+				contents += '<div class="ej2" style="float:left; width:54px; height:100%; text-align: right; display:none;">$ ' + dbPeajes[a][15].ej2.valle + '</div><div class="ej2" style="float:left; width:54px; height:100%; text-align: right; display:none; clear:right;">$ ' + dbPeajes[a][15].ej2.pico + '</div>';
+				contents += '<div class="ej3" style="float:left; width:54px; height:100%; text-align: right; display:none;">$ ' + dbPeajes[a][15].ej3.valle + '</div><div class="ej3" style="float:left; width:54px; height:100%; text-align: right; display:none; clear:right;">$ ' + dbPeajes[a][15].ej3.pico + '</div>';
+				contents += '<div class="ej4" style="float:left; width:54px; height:100%; text-align: right; display:none;">$ ' + dbPeajes[a][15].ej4.valle + '</div><div class="ej4" style="float:left; width:54px; height:100%; text-align: right; display:none; clear:right;">$ ' + dbPeajes[a][15].ej4.pico + '</div>';
+				contents += '<div class="ej5" style="float:left; width:54px; height:100%; text-align: right; display:block;">$ ' + dbPeajes[a][15].ej5.valle + '</div><div class="ej5" style="float:left; width:54px; height:100%; text-align: right; display:block; clear:right;">$ ' + dbPeajes[a][15].ej5.pico + '</div>';
+				contents += '<div class="ej6" style="float:left; width:54px; height:100%; text-align: right; display:none;">$ ' + dbPeajes[a][15].ej6.valle + '></div><div class="ej6" style="float:left; width:54px; height:100%; text-align: right; display:none; clear:right;">$ ' + dbPeajes[a][15].ej6.pico + '</div>';
 				//alert(ejesTotal.ej5 + Number(dbPeajes[a][15].ej5.valle));
 				ejesTotal.ej2 += Number(dbPeajes[a][15].ej2.valle);
 				ejesTotal.ej3 += Number(dbPeajes[a][15].ej3.valle);
@@ -271,13 +271,13 @@ function calcularPeaje2(result, indice) {
 		//r.map = none;
 	}
 
-	//contents += '<div style="width:302px; height:50px;"><div style="float:left; width:100px; height:100%; padding-right: 5px;">Total Calculado</div>';
-	//contents +=	'<div style="float:left; width:75px; height:100%;"></div>';
-	//contents +=	'<div class="ej2" style="float:left; width:60px; height:100%; display:none;">$ ' + (ejesTotal.ej2).toFixed(2) + '</div><div class="ej2" style="float:left; width:60px; height:100%; display:none;"></div>';
-	//contents +=	'<div class="ej3" style="float:left; width:60px; height:100%; display:none;">$ ' + (ejesTotal.ej3).toFixed(2) + '</div><div class="ej3" style="float:left; width:60px; height:100%; display:none;"></div>';
-	//contents +=	'<div class="ej4" style="float:left; width:60px; height:100%; display:none;">$ ' + (ejesTotal.ej4).toFixed(2) + '</div><div class="ej4" style="float:left; width:60px; height:100%; display:none;"></div>';
-	//contents +=	'<div class="ej5" style="float:left; width:60px; height:100%; display:block;">$ ' + (ejesTotal.ej5).toFixed(2) + '</div><div class="ej5" style="float:left; width:60px; height:100%; display:block;"></div>';
-	//contents +=	'<div class="ej6" style="float:left; width:60px; height:100%; display:none;">$ ' + (ejesTotal.ej6).toFixed(2) + '</div><div class="ej6" style="float:left; height:100%; width:60px; display:none; clear:right;"></div></div>';
+	contents += '<div style="float:left; width:101px; height:100%; padding-right: 5px; clear:left;">' + dbPeajes[a][5] + '</div>';
+	contents += '<div style="float:left; width:75px; height:100%; text-align: center;"> </div>';
+	contents += '<div class="ej2" style="float:left; width:54px; height:100%; text-align: right; display:none;">$ ' + ejesTotal.ej2 + '</div><div class="ej2" style="float:left; width:54px; height:100%; text-align: right; display:none; clear:right;"> </div>';
+	contents += '<div class="ej3" style="float:left; width:54px; height:100%; text-align: right; display:none;">$ ' + ejesTotal.ej3 + '</div><div class="ej3" style="float:left; width:54px; height:100%; text-align: right; display:none; clear:right;"> </div>';
+	contents += '<div class="ej4" style="float:left; width:54px; height:100%; text-align: right; display:none;">$ ' + ejesTotal.ej4 + '</div><div class="ej4" style="float:left; width:54px; height:100%; text-align: right; display:none; clear:right;"> </div>';
+	contents += '<div class="ej5" style="float:left; width:54px; height:100%; text-align: right; display:block;">$ ' + ejesTotal.e5 + '</div><div class="ej5" style="float:left; width:54px; height:100%; text-align: right; display:block; clear:right;"> </div>';
+	contents += '<div class="ej6" style="float:left; width:54px; height:100%; text-align: right; display:none;">$ ' + ejesTotal.ej6 + '></div><div class="ej6" style="float:left; width:54px; height:100%; text-align: right; display:none; clear:right;"> </div>';
 		
 //alert(peajesPasados[0][5]); 
 //contents += '</table>';
