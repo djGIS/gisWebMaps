@@ -271,8 +271,8 @@ function calcularPeaje2(result, indice) {
 		//r.map = none;
 	}
 	//Number(dbTemp[i][13]).toFixed(2)
-	contents += '<div style="float:left; width:101px; height:100%; padding-right: 5px; clear:left;">Total Calculado</div>';
-	contents += '<div style="float:left; width:75px; height:100%; text-align: center;"> </div>';
+	contents += '<div style="float:left; width:176px; height:100%; padding-right: 5px; clear:left;">Total Calculado</div>';
+	//contents += '<div style="float:left; width:75px; height:100%; text-align: center;"> </div>';
 	contents += '<div class="ej2" style="float:left; width:54px; height:100%; text-align: right; display:none;">$ ' + (ejesTotal.ej2).toFixed(2) + '</div><div class="ej2" style="float:left; width:54px; height:100%; text-align: right; display:none; clear:right;"> </div>';
 	contents += '<div class="ej3" style="float:left; width:54px; height:100%; text-align: right; display:none;">$ ' + (ejesTotal.ej3).toFixed(2) + '</div><div class="ej3" style="float:left; width:54px; height:100%; text-align: right; display:none; clear:right;"> </div>';
 	contents += '<div class="ej4" style="float:left; width:54px; height:100%; text-align: right; display:none;">$ ' + (ejesTotal.ej4).toFixed(2) + '</div><div class="ej4" style="float:left; width:54px; height:100%; text-align: right; display:none; clear:right;"> </div>';
