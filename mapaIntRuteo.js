@@ -328,8 +328,110 @@ document.getElementById('peajes').innerHTML = "";
 document.getElementById('peajes').innerHTML = contents;
 document.getElementById('peajes').style.display = '';
 //document.getElementsByClassName('ej2').style.display = 'none';
-}		
+}
 
+function calcularTconduccion(result, indice) {
+var vGoogle = 0;
+var vCalculada = 0;
+var vMax = 80 * 3.6;
+var vFactor = 0.9;
+var cFactor = 35 / 100000;
+var cUrbano = 1.1;
+var cCalculada = 0;
+var cTotal = 0;
+var tCalculada = 0;
+var tParcial = 0;
+var tTotal = 0;
+var dTotal = 0;
+var myroute = result.routes[indice];
+
+
+
+for (var i = 0; i < myroute.legs.length; i++) {
+	for (var j = 0; j < myroute.legs[i].steps.length; j++) {
+		dTotal += myroute.legs[i].steps[j].distance.value;
+		vGoogle = myroute.legs[i].steps[j].distance.value / myroute.legs[i].steps[j].duration.value;
+		if (vGoogle > vMax) 
+			vGoogle = vMax;
+		vCalculada = vFactor * vGoogle;
+		tCalculada = myroute.legs[i].steps[j].distance.value / vCalculada;
+		tParcial += tCalculada;
+		tTotal += tCalculada;
+
+//alert(tTotal / 3600);
+//if (tParcial > 16200) {
+// Place marker
+//var marker = new google.maps.Marker({
+//map: map,
+//icon: 'http://maps.google.com/mapfiles/kml/pal3/icon52.png',
+//position: myroute.legs[i].steps[j].start_location
+//}); 
+//var texto = 
+//addHito();
+//		document.getElementById('hito' + counterHitos).value = results[1].formatted_address;
+//geocodeLatLng(myroute.legs[i].steps[j].start_location);
+//alert(texto);
+//tParcial = tCalculada;
+//tTotal += 2700;
+//}
+
+if (vCalculada > 60) { cCalculada = myroute.legs[i].steps[j].distance.value * cFactor; }
+else { cCalculada = myroute.legs[i].steps[j].distance.value * cFactor * cUrbano; }
+cTotal = cTotal + cCalculada;
+
+//alert(myroute.legs[i].steps[j].distance.value + " " + myroute.legs[i].steps[j].duration.value + " " + total);
+//total += myroute.legs[i].distance.value;
+	}
+}
+//total = total / 1000.
+dTotal = Math.round(dTotal / 100) / 10;
+tTotal = formatearTiempo(tTotal);
+//alert(dTotal + "km, " + tTotal + "horas, " + cTotal + "L combustible");
+
+var contents =  '<img src="http://www.fadeeac.org.ar/wp-content/uploads/2017/01/miCamion.png" style="height:30px;width:30px;float:left;">';
+	contents += '<span style="float:right;width:250px;">Distancia total: ' + dTotal + ' km</br>Tiempo estimado de conducción: ' + tTotal + '</span>';
+document.getElementById('tCamion').innerHTML = "";
+document.getElementById('tCamion').innerHTML = contents;
+document.getElementById('tCamion').style.display = 'block';
+}
+
+function formatearTiempo(tImput) { 
+	var tFormateado;
+	var temp;
+	tImput = tImput / 3600;
+	
+	if (tImput > 24) {
+		temp = Math.floor(tImput / 24);
+		tImput -= temp * 24;
+		if (temp == 1) {
+			tFormateado = temp.toString() + ' día '
+		} else {
+			tFormateado = temp.toString() + ' días '
+		}
+		temp = Math.round(tImput);
+		if (temp == 1) {
+			tFormateado += temp.toString() + ' h. '
+		} else {
+			tFormateado += temp.toString() + ' hs. '
+		}
+	} else if (tImput > 1) { 
+		temp = Math.floor(tImput);
+		tImput = (tImput - temp) * 60;
+		if (temp == 1) {
+			tFormateado = temp.toString() + ' h. '
+		} else {
+			tFormateado = temp.toString() + ' hs. '
+		}
+		temp = Math.round(tImput);
+		tFormateado += temp.toString() + ' min. '
+	} else { 	
+		tImput = tImput * 60;
+		temp = Math.round(tImput);
+		tFormateado = temp.toString() + ' min. '
+	}
+	
+	return tFormateado;
+}
 
 function sendRouteStats() {
 	var indicacionesHitos = document.getElementById('origen').statsValue + ' | ';
