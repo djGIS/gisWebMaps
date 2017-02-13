@@ -22,21 +22,12 @@ function obtenerDirecciones() {
 
 	google.maps.event.addListener(directionsDisplay, 'routeindex_changed', function() { 
 		calcularTconduccion(directionsDisplay.getDirections(),directionsDisplay.getRouteIndex());
-		//if (document.getElementById('applygrid').checked == true) {
-			//aplicarGrilla(document.getElementById('gridsize').value);
-		//}
-		//calcularPeaje1(dbPOIimport,directionsDisplay.getDirections(),directionsDisplay.getRouteIndex());
 		calcularPeaje2(directionsDisplay.getDirections(),directionsDisplay.getRouteIndex());
 		sendRouteStats();
 	});
 			
 	google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
 		calcularTconduccion(directionsDisplay.getDirections(),directionsDisplay.getRouteIndex());
-		//if (document.getElementById('applygrid').checked == true) {
-			//aplicarGrilla(document.getElementById('gridsize').value);
-		//}
-		//calcularPeaje1(dbPOIimport,directionsDisplay.getDirections(),directionsDisplay.getRouteIndex());
-		
 		calcularPeaje2(directionsDisplay.getDirections(),directionsDisplay.getRouteIndex());
 		sendRouteStats();
 	});
@@ -268,8 +259,8 @@ function calcularPeaje2(result, indice) {
 			var result = google.maps.geometry.poly.containsLocation(point, r);
 			if (result == true) {
 				//contents += '<div style="width:302px; height:50px;">';
-				contents += '<div style="float:left; width:101px; height:100%; padding-right: 5px;"><p>' + dbPeajes[a][5] + '</p></div>';
-				contents +=	'<div style="float:left; width:75px; height:100%;"><p style="text-align: center">' + dbPeajes[a][15].horaPico + '</p></div>';
+				contents += '<div style="float:left; width:101px; height:100%; padding-right: 5px;"><span>' + dbPeajes[a][5] + '</span></div>';
+				contents +=	'<div style="float:left; width:75px; height:100%;"><span style="text-align: center">' + dbPeajes[a][15].horaPico + '</span></div>';
 				contents +=	'<div class="ej2" style="float:left; width:55px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej2.valle + '</span></div><div class="ej2" style="float:left; width:55px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej2.pico + '</span></div>';
 				contents +=	'<div class="ej3" style="float:left; width:55px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej3.valle + '</span></div><div class="ej3" style="float:left; width:55px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej3.pico + '</span></div>';
 				contents +=	'<div class="ej4" style="float:left; width:55px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej4.valle + '</span></div><div class="ej4" style="float:left; width:55px; height:100%; display:none;"><span style="text-align: right">$ ' + dbPeajes[a][15].ej4.pico + '</span></div>';
