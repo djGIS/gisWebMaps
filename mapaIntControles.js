@@ -523,7 +523,6 @@ function ruteoInfo() {
 
 	infoArea = document.createElement('div');
 	infoArea.id = 'indicaciones';
-	infoArea.style.display = 'none';
 	//infoArea.style.cssText = 'background:rgba(255,255,255,0.75)';
 	//infoArea.style.maxHeight = '250px'; 
 	//infoArea.style.overflowY = 'scroll';
