@@ -43,8 +43,6 @@ function initMenu() {
 		controles.onclick = function(){panelMinMax(this);};
 	panelLatMinimize.appendChild(controles);
 	
-	
-	
 	for (var i = 0; i < menuItems.length; i++) {
 		controles = document.createElement('input');
 		controles.type = 'button';
@@ -83,15 +81,15 @@ function initMenu() {
 }
 
 function formControls(tipo) { 
-var children = document.getElementById('miSideBarContent').children;
-for (var i = 0; i < children.length; i++) {
-	if (children[i].id == tipo.id + 'Container') { 
-		children[i].style.display = 'block';
-	} else {
-		children[i].style.display = 'none';
-	}	
+	var children = document.getElementById('miSideBarContent').children;
+	for (var i = 0; i < children.length; i++) {
+		if (children[i].id == tipo.id + 'Container') { 
+			children[i].style.display = 'block';
+		} else {
+			children[i].style.display = 'none';
+		}	
 	}
-panelMinMax();	
+	panelMinMax();	
 }
 
 function panelMinMax(tipo) { 
@@ -522,17 +520,14 @@ infoArea.style.display = 'none';
 infoArea.style.overflowY = 'auto';
 container.appendChild(infoArea);
 
-infoArea = document.createElement('div');
-infoArea.id = 'indicaciones';
+	infoArea = document.createElement('div');
+	infoArea.id = 'indicaciones';
+	infoArea.style.display = 'none';
 //infoArea.style.cssText = 'background:rgba(255,255,255,0.75)';
 //infoArea.style.maxHeight = '250px'; 
 //infoArea.style.overflowY = 'scroll';
 //; maxHeight:250px; overflowY:scroll';
-container.appendChild(infoArea);
-
-google.maps.event.addDomListenerOnce(infoArea, 'onchange', function() { 
-		sendRouteStats();
-	});
+	container.appendChild(infoArea);
 
 var infoArea = document.createElement('div');
 infoArea.id = 'peajes';
