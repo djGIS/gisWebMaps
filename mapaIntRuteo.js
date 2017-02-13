@@ -109,24 +109,7 @@ function computeTotalDistance(result) {
 	total = total / 1000.
 }
 
-function aplicarGrilla(distGrilla) {
-	//var distGrilla = 10; // km
-	var boxes = routeBoxer.box(routePath, distGrilla);
 
-	if (routePath != null && markers.length > 0) {
-	for (var a = 0; a < markers.length; a++) {
-		var boundsTest = false;
-		for (var i = 0; i < boxes.length; i++) {
-			var bounds = boxes[i];
-			if (bounds.contains(markers[a].position)) {
-				boundsTest = true;
-			}
-		}
-		if (boundsTest != true) {
-			markers[a].setMap(null);
-		}
-	}
-}
 
 function peajeSelecEjes(fuente) {
 	alert(fuente.value);
