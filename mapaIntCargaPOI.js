@@ -213,3 +213,18 @@ if (document.getElementById('applygrid').checked == true) {
 aplicarGrilla(document.getElementById('gridsize').value);
 }
 }
+
+function campoRClick (marker, campo) {
+	if (campo == 'hito') {
+		addHito();
+		document.getElementById(campo + counterHitos.toString()).value = 'LatLng' + marker.position;
+		codeAddress(document.getElementById(campo + counterHitos.toString()));
+	} else 	{
+		document.getElementById(campo).value = 'LatLng' + marker.position;
+		codeAddress(document.getElementById(campo));
+	}
+}
+
+function comunicarProblema (marker) {
+	alert(marker.tipo);
+}
