@@ -374,7 +374,7 @@ function sendRouteStats() {
 		indicacionesHitos += document.getElementById('hito' + counterHitos.toString()).statsValue + ' | ';
 	}	
 	indicacionesHitos += document.getElementById('destino').statsValue;
-	alert(indicacionesHitos);
+	//alert(indicacionesHitos);
 
 	//dataLayer.push({'obtenerIndicaciones': indicacionesHitos, 'event':'ClicObtenerIndicaciones'});
 	//ga('send', 'event', 'Clic', 'Obtener Indicaciones - MISig', indicacionesHitos);
