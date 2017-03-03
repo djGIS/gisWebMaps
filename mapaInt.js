@@ -34,19 +34,13 @@ function cargarMapa() {
 function fullscreenTogle (elemId) {
 	var fullscreenElem = document.getElementById(elemId);
 
-	google.maps.event.addDomListener(document, 'keyup', function (){ //e) {
-		//var code = (e.keyCode ? e.keyCode : e.which);
-
-    		//if (e.keyCode === 27) {
-        		alert('going out of fullscreen');
-    		//}
-	});
 	if (fullscreenElem.requestFullscreen) {
-        if (document.fullScreenElement) {
-            document.cancelFullScreen();       
-        } else {
-          fullscreenElem.requestFullscreen();
-        }
+        	if (document.fullScreenElement) {
+			alert('closing');
+            		document.cancelFullScreen();       
+        	} else {
+          		fullscreenElem.requestFullscreen();
+        	}
   	//if (fullscreenElem.requestFullscreen) {
     	//	fullscreenElem.requestFullscreen();
   	} else if (fullscreenElem.msRequestFullscreen) {
