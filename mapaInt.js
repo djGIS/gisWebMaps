@@ -34,7 +34,7 @@ function cargarMapa() {
 function fullscreenTogle (elemId) {
 	var fullscreenElem = document.getElementById(elemId);
 
-	google.maps.event.addDomListener(map, 'keyup', function (){ //e) {
+	google.maps.event.addDomListener(document, 'keyup', function (){ //e) {
 		//var code = (e.keyCode ? e.keyCode : e.which);
 
     		//if (e.keyCode === 27) {
