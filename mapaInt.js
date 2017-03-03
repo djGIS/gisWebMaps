@@ -17,7 +17,7 @@ function cargarMapa() {
       style: google.maps.ZoomControlStyle.SMALL,
       position: google.maps.ControlPosition.RIGHT_BOTTOM
     },
-    mapTypeControl : true,
+    mapTypeControl : false,
     mapTypeControlOptions: {
       style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
       position: google.maps.ControlPosition.TOP_RIGHT
