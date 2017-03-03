@@ -41,9 +41,14 @@ function fullscreenTogle (elemId) {
         		alert('going out of fullscreen');
     		//}
 	});
-	
-  	if (fullscreenElem.requestFullscreen) {
-    		fullscreenElem.requestFullscreen();
+	if (fullscreenElem.requestFullscreen)   
+        if (document.fullScreenElement) {
+            document.cancelFullScreen();       
+        } else {
+          fullscreenElem.requestFullscreen();
+        }
+  	//if (fullscreenElem.requestFullscreen) {
+    	//	fullscreenElem.requestFullscreen();
   	} else if (fullscreenElem.msRequestFullscreen) {
     		fullscreenElem.msRequestFullscreen();
   	} else if (fullscreenElem.mozRequestFullScreen) {
