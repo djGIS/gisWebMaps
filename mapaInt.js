@@ -19,7 +19,7 @@ function cargarMapa() {
     },
     mapTypeControl : true,
     mapTypeControlOptions: {
-      style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+      style: google.maps.MapTypeControlStyle.VERTICAL_BAR,
       position: google.maps.ControlPosition.TOP_RIGHT
     },
     scaleControl : true,
