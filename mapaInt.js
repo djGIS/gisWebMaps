@@ -41,7 +41,7 @@ function fullscreenTogle (elemId) {
         		alert('going out of fullscreen');
     		//}
 	});
-	if (fullscreenElem.requestFullscreen)   
+	if (fullscreenElem.requestFullscreen) {
         if (document.fullScreenElement) {
             document.cancelFullScreen();       
         } else {
