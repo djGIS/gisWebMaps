@@ -45,9 +45,9 @@ function fullscreenTogle (elemId) {
   	}
 	
 	google.maps.event.addDomListener(document, 'keyup', function (e) {
-		var code = (e.keyCode ? e.keyCode : e.which);
+		//var code = (e.keyCode ? e.keyCode : e.which);
 
-    		if (code === 27) {
+    		if (e.keyCode === 27) {
         		alert('going out of fullscreen');
     		}
 	});
