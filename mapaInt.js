@@ -32,17 +32,25 @@ function cargarMapa() {
 }
 
 function fullscreenTogle (elemId) {
-  var fullscreenElem = document.getElementById(elemId);
+	var fullscreenElem = document.getElementById(elemId);
 
-  if (fullscreenElem.requestFullscreen) {
-    fullscreenElem.requestFullscreen();
-  } else if (fullscreenElem.msRequestFullscreen) {
-    fullscreenElem.msRequestFullscreen();
-  } else if (fullscreenElem.mozRequestFullScreen) {
-    fullscreenElem.mozRequestFullScreen();
-  } else if (fullscreenElem.webkitRequestFullScreen) {
+  	if (fullscreenElem.requestFullscreen) {
+    		fullscreenElem.requestFullscreen();
+  	} else if (fullscreenElem.msRequestFullscreen) {
+    		fullscreenElem.msRequestFullscreen();
+  	} else if (fullscreenElem.mozRequestFullScreen) {
+    		fullscreenElem.mozRequestFullScreen();
+  	} else if (fullscreenElem.webkitRequestFullScreen) {
 		fullscreenElem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-  }
+  	}
+	
+	google.maps.event.addDomListener(document, 'keyup', function (e) {
+		var code = (e.keyCode ? e.keyCode : e.which);
+
+    		if (code === 27) {
+        		alert('going out of fullscreen');
+    		}
+	});
 }
 	
 function fullscreenControls() {
