@@ -378,13 +378,13 @@ function sendRouteStats() {
 if ("ga" in window) {
     tracker = ga.getAll()[0];
     if (tracker)
-        tracker.send("event", "Test", "Test GA");
+        tracker.send("event", "Busqueda", "Obtener Indicaciones - MISig", indicacionesHitos);
 }
 	//dataLayer.push({'obtenerIndicaciones': indicacionesHitos, 'event':'ClicObtenerIndicaciones'});
 	//ga('send', 'event', 'Clic', 'Obtener Indicaciones - MISig', indicacionesHitos);
-	ga('send', 'event', 'Click', 'Obtener Indicaciones - miSIG', indicacionesHitos, {
-		'hitCallback': function() {
-    			alert('analytics done sending data');
-  		}
-	});
+	//ga('send', 'event', 'Click', 'Obtener Indicaciones - miSIG', indicacionesHitos, {
+//		'hitCallback': function() {
+ //   			alert('analytics done sending data');
+ // 		}
+//	});
 }
