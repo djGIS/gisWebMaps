@@ -375,7 +375,11 @@ function sendRouteStats() {
 	}	
 	indicacionesHitos += document.getElementById('destino').statsValue;
 	//alert(indicacionesHitos);
-
+if ("ga" in window) {
+    tracker = ga.getAll()[0];
+    if (tracker)
+        tracker.send("event", "Test", "Test GA");
+}
 	//dataLayer.push({'obtenerIndicaciones': indicacionesHitos, 'event':'ClicObtenerIndicaciones'});
 	//ga('send', 'event', 'Clic', 'Obtener Indicaciones - MISig', indicacionesHitos);
 	ga('send', 'event', 'Click', 'Obtener Indicaciones - miSIG', indicacionesHitos, {
