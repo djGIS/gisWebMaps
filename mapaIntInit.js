@@ -2,6 +2,7 @@
 var vinculo_dbPOI = '1i0Q7uVwWjJgw3cEg-dsAUnmhMPX2nzuLfkzgsNA';
 var vinculo_dbTarifasPeajes = '1hWzwymGyRqw2c-YoOMNjmla5WiiUZsvO71bWmR2r';
 var vinculo_dbRUTA = '1KKWAfz1a-1Zt2P0E5UoJLTIL7GmsRLA62tWn91EQ';
+var vinculo_dbFPT = '1pIMj1G2CF4T83VaMuqOtmBw7Z2NBXEl7JOYK7kJq';
 var vinculo_dbEESS = '1obPn7mFkffMcwMUrxb4mLGnFyBu8GJGUBgddupK9';
 var vinculo_dbRTP = '1bDkJ4DpLj2wBuuSMxWyiDT5FLMO52zz9wtlsoAU';
 var vinculo_dbRestricciones = '1MxNzFFtAKZpbHpmF07tUzqxmMBGN_fxdaaYEaAJz';
@@ -15,10 +16,9 @@ function initialize() {
 	getDataPeajes(vinculo_dbTarifasPeajes);
 	getData(vinculo_dbPOI);
 	getData(vinculo_dbRUTA);
+	getData(vinculo_dbFPT);
 	getData(vinculo_dbEESS);
-
 	
-
 	//inicialización del objeto mapa
 	mapId = "miSIGmapa";
 	myCenter = new google.maps.LatLng(-34.8, -63.5);
@@ -27,7 +27,6 @@ function initialize() {
 	initMenu();
 	fullscreenControls();
 	geoLocControls();
-
 
  //buscadorControls();
 //capasControl();
