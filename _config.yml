@@ -1,7 +1,7 @@
-title: Misig
-description: Interactive Web Maps for GIS Applications
+title: Mapa Interactivo GIS
+description: Mapas interactivos para aplicaciones de GIS
 google_analytics: 
-show_downloads: true
+show_downloads: false
 theme: jekyll-theme-slate
 
 gems:
