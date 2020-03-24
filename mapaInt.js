@@ -4,7 +4,7 @@ var mapId;
 
 function cargarMapa(myCentre, myZoom) {
   var mapProp = {
-    center : myCenter,
+    center : myCentre,
     zoom : myZoom,
     panControl : true,
     panControlOptions: {
