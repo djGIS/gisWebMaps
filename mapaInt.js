@@ -1,10 +1,8 @@
 //inicialización del objeto mapa
 var map;
 var mapId;
-var myCenter;
-var myZoom;
 
-function cargarMapa() {
+function cargarMapa(myCentre, myZoom) {
   var mapProp = {
     center : myCenter,
     zoom : myZoom,
@@ -29,37 +27,4 @@ function cargarMapa() {
   };
 
   map = new google.maps.Map(document.getElementById(mapId),mapProp);
-}
-
-function fullscreenTogle (elemId) {
-	var fullscreenElem = document.getElementById(elemId);
-
-	if (fullscreenElem.requestFullscreen) {
-        	if (document.fullScreenElement) {
-			alert('closing');
-            		document.cancelFullScreen();       
-        	} else {
-          		fullscreenElem.requestFullscreen();
-        	}
-  	//if (fullscreenElem.requestFullscreen) {
-    	//	fullscreenElem.requestFullscreen();
-  	} else if (fullscreenElem.msRequestFullscreen) {
-    		fullscreenElem.msRequestFullscreen();
-  	} else if (fullscreenElem.mozRequestFullScreen) {
-    		fullscreenElem.mozRequestFullScreen();
-  	} else if (fullscreenElem.webkitRequestFullScreen) {
-		fullscreenElem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-  	}
-	
-	
-}
-	
-function fullscreenControls() {
-  var controles = document.createElement('input');
-	controles.type = 'button';
-	controles.id = 'fullscreenTogle';
-	controles.style.cssText = 'border: 0px solid;border-radius: 2px;margin-right:10px;width:28px;height:28px;background-image:url("http://www.fadeeac.org.ar/wp-content/uploads/2016/08/fullscreenIcon.png");background-size: 30px 30px;background-position:center;background-color: white;';
-	controles.onclick = function(){fullscreenTogle('miSIGmapa');};
-	
-  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controles);
 }
