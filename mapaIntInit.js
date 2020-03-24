@@ -2,14 +2,7 @@ var miftah = 'AIzaSyDXbo71RxVDc9lB-Ahpif7s-tDqrSbcvDQ';
 
 var mapaAltura = 450;
 
-function initialize() {
-	//cargar base de datos de POI desde fusion tables
-	getDataPeajes(vinculo_dbTarifasPeajes);
-	getData(vinculo_dbPOI);
-	getData(vinculo_dbRUTA);
-	getData(vinculo_dbFPT);
-	getData(vinculo_dbEESS);
-	
+function initialize() {	
 	//inicialización del objeto mapa
 	mapId = "miSIGmapa";  // div placeholder for map
 	var defaultCentre = new google.maps.LatLng(-34.8, -63.5);
