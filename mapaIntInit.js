@@ -1,5 +1,3 @@
-var miftah = 'AIzaSyDXbo71RxVDc9lB-Ahpif7s-tDqrSbcvDQ';
-
 var mapaAltura = 450;
 
 function initialize() {	
