@@ -41,6 +41,7 @@ function handleClientLoad() {
 }
 
 function initClient() {
+	alert('loading POI');
     gapi.client.init({
         apiKey: API_KEY,
         clientId: CLIENT_ID,
