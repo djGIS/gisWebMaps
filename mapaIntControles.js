@@ -89,7 +89,7 @@ function formControls(tipo) {
 			children[i].style.display = 'none';
 		}	
 	}
-	panelMinMax();	
+	panelMinMax(tipo);	
 }
 
 function panelMinMax(tipo) { 
