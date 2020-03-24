@@ -41,7 +41,6 @@ function handleClientLoad() {
 }
 
 function initClient() {
-	alert('loading POI');
     gapi.client.init({
         apiKey: API_KEY,
         clientId: CLIENT_ID,
@@ -54,8 +53,9 @@ function initClient() {
           // Handle the initial sign-in state.
           //updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
 		gapi.auth2.getAuthInstance(); //.signIn({prompt: 'none'});
+	    	alert(gapi.auth2.getAuthInstance().isSignedIn.get());  
 		signinStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-		  
+		
           //authorizeButton.onclick = handleAuthClick;
           //signoutButton.onclick = handleSignoutClick;
     }, function(error) {
