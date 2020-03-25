@@ -7,22 +7,22 @@ var markers = [];
 var markerCluster;
 var POIvisualFormato = [
 	//[CLASE, TIPO, textoMenu, icono, infoWindowTexto],
-	['EN RUTA', 'PEAJE', 'Peajes', 'http://maps.google.com/mapfiles/ms/icons/yellow.png', ' '],
-	['EN RUTA', 'ESTACION DE SERVICIO', 'Estaciones de Servicio', 'http://maps.google.com/mapfiles/ms/icons/blue.png', ' '],
-	['EN RUTA', 'PASO INTERNACIONAL', 'Pasos Internacionales', 'http://maps.google.com/mapfiles/ms/icons/yellow.png', ' '],
-	['EN RUTA', 'CAJON AZUL', 'Cajones Azules CABA', 'http://maps.google.com/mapfiles/ms/icons/lightblue.png', ' '],
-	['EN RUTA', 'PARQUE INDUSTRIAL', 'Parques Industriales','http://maps.google.com/mapfiles/ms/icons/purple.png', ' '],
-	['EN RUTA', 'TERMINALES PORTURIAS', 'Terminales Portuarias','http://maps.google.com/mapfiles/ms/icons/purple.png', ' '],
-	['PERMISOS', 'RTO/VTV', 'Revisión Técnica', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
-	['PERMISOS', 'RUTA', 'RUTA', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
-	['PERMISOS', 'FPT', 'LNH/Cursos COAP', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
-	['PERMISOS', 'PSICOFISICO', 'Examen Psicofisico', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
-	['PERMISOS', 'ADUANA', 'AFIP - Aduana', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
-	['PERMISOS', 'TRANSPORTE ALIMENTOS', 'SENASA (Alimentos)', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
-	['PERMISOS', 'VIALIDAD', 'Vialidad - Cargas Excepcionales', 'http://maps.google.com/mapfiles/ms/icons/red.png', ' '],
-	['SERVICIOS', 'FADEEAC', 'FADEEAC (Afiliados)', 'http://maps.google.com/mapfiles/ms/icons/lightblue.png', ' '],
-	['SERVICIOS', 'POLICIA', 'Comisarias', 'http://maps.google.com/mapfiles/ms/icons/blue.png', ' '],
-	['SERVICIOS', 'TALLER', 'Talleres', 'http://maps.google.com/mapfiles/ms/icons/purple.png', ' ']
+	['EN RUTA', 'PEAJE', 'Peajes', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/yellow.png', ' '],
+	['EN RUTA', 'ESTACION DE SERVICIO', 'Estaciones de Servicio', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/blue.png', ' '],
+	['EN RUTA', 'PASO INTERNACIONAL', 'Pasos Internacionales', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/yellow.png', ' '],
+	['EN RUTA', 'CAJON AZUL', 'Cajones Azules CABA', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/lightblue.png', ' '],
+	['EN RUTA', 'PARQUE INDUSTRIAL', 'Parques Industriales','https://www.fadeeac.org.ar/wp-content/uploads/2020/03/purple.png', ' '],
+	['EN RUTA', 'TERMINALES PORTURIAS', 'Terminales Portuarias','https://www.fadeeac.org.ar/wp-content/uploads/2020/03/purple.png', ' '],
+	['PERMISOS', 'RTO/VTV', 'Revisión Técnica', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/red.png', ' '],
+	['PERMISOS', 'RUTA', 'RUTA', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/red.png', ' '],
+	['PERMISOS', 'FPT', 'LNH/Cursos COAP', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/red.png', ' '],
+	['PERMISOS', 'PSICOFISICO', 'Examen Psicofisico', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/red.png', ' '],
+	['PERMISOS', 'ADUANA', 'AFIP - Aduana', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/red.png', ' '],
+	['PERMISOS', 'TRANSPORTE ALIMENTOS', 'SENASA (Alimentos)', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/red.png', ' '],
+	['PERMISOS', 'VIALIDAD', 'Vialidad - Cargas Excepcionales', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/red.png', ' '],
+	['SERVICIOS', 'FADEEAC', 'FADEEAC (Afiliados)', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/lightblue.png', ' '],
+	['SERVICIOS', 'POLICIA', 'Comisarias', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/blue.png', ' '],
+	['SERVICIOS', 'TALLER', 'Talleres', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/purple.png', ' ']
 ]; 
 
 //cargar base de datos de POI desde fusion tables
@@ -48,7 +48,7 @@ function initClient() {
         scope: SCOPES
     }).then(function () {
           // Listen for sign-in state changes.
-          //gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
           // Handle the initial sign-in state.
           //updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
@@ -67,24 +67,18 @@ function signinStatus(isSignedIn) {
         cargarPOI();
     }
 }
-      /**
-       *  Called when the signed in status changes, to update the UI
-       *  appropriately. After a sign-in, the API is called.
-       */
-     /*function updateSigninStatus(isSignedIn) {
+ 
+function updateSigninStatus(isSignedIn) {
         if (isSignedIn) {
-          authorizeButton.style.display = 'none';
+          //authorizeButton.style.display = 'none';
           //signoutButton.style.display = 'block';
-    //      cargarPOI();
-        } else {
-          authorizeButton.style.display = 'block';
+         cargarPOI();
+    //    } else {
+     //     authorizeButton.style.display = 'block';
           //signoutButton.style.display = 'none';
         }
-      }*/
+      }
 
-      /**
-       *  Sign in the user upon button click.
-       */
       //function handleAuthClick(event) {
         //gapi.auth2.getAuthInstance().signIn();
       //}
@@ -103,7 +97,7 @@ function signinStatus(isSignedIn) {
        * @param {string} message Text to be placed in pre element.
        */
       function cargarPOI() {
-	  alert("getting data");
+	 // alert("getting data");
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '17uB9MkvDjAUQ84PLvYZTwH2Y_JRFjJ08bvs2QHZYcTg',
           range: 'dbPOI-SIG-FADEEAC!A:V',

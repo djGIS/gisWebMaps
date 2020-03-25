@@ -2,10 +2,10 @@
 
 function initMenu() { 
 	var menuItems = [
-		['icono', 'http://www.fadeeac.org.ar/wp-content/uploads/2016/03/fadeeac.png', 'none', '170px;margin-right:5px;'],
-		['busqueda', 'http://www.fadeeac.org.ar/wp-content/uploads/2017/01/mibuscar.png', 'none', '50px;margin-right:5px;'],
-		['ruteo', 'http://www.fadeeac.org.ar/wp-content/uploads/2017/01/mirutear.png', 'none', '50px;margin-right:5px;'],
-		['capas', 'http://www.fadeeac.org.ar/wp-content/uploads/2017/01/micapas.jpg', 'block', '50px']
+		['icono', 'https://www.fadeeac.org.ar/wp-content/uploads/2016/03/fadeeac.png', 'none', '170px;margin-right:5px;'],
+		['busqueda', 'https://www.fadeeac.org.ar/wp-content/uploads/2017/01/mibuscar.png', 'none', '50px;margin-right:5px;'],
+		['ruteo', 'https://www.fadeeac.org.ar/wp-content/uploads/2017/01/mirutear.png', 'none', '50px;margin-right:5px;'],
+		['capas', 'https://www.fadeeac.org.ar/wp-content/uploads/2017/01/micapas.jpg', 'block', '50px']
 	];
 	
 	//var panelLatWidth = 350;
@@ -39,7 +39,7 @@ function initMenu() {
 	var controles = document.createElement('input');
 	controles.type = 'button';
 	controles.id = 'panelLatMinMax';
-	controles.style.cssText = 'border: 0px solid;border-radius: 2px;height:10px;width:338px;background-image:url("http://www.fadeeac.org.ar/wp-content/uploads/2017/01/double-arrow-up-512.png");background-position:center;background-size:8px;background-repeat:no-repeat;background-color: white;';
+	controles.style.cssText = 'border: 0px solid;border-radius: 2px;height:10px;width:338px;background-image:url("https://www.fadeeac.org.ar/wp-content/uploads/2017/01/double-arrow-up-512.png");background-position:center;background-size:8px;background-repeat:no-repeat;background-color: white;';
 	controles.onclick = function(){panelMinMax(this);};
 	panelLatMinimize.appendChild(controles);
 	
@@ -96,11 +96,11 @@ function panelMinMax(tipo) {
 	var estado = document.getElementById('miSideBarContent').style.display;
 	if (estado == 'none') { 
 		document.getElementById('miSideBarContent').style.display = 'block';
-		document.getElementById('panelLatMinMax').style.cssText = 'border: 0px solid;border-radius: 2px;height:10px;width:338px;background-image:url("http://www.fadeeac.org.ar/wp-content/uploads/2017/01/double-arrow-up-512.png");background-position:center;background-size:8px;background-repeat:no-repeat;background-color: white;';
+		document.getElementById('panelLatMinMax').style.cssText = 'border: 0px solid;border-radius: 2px;height:10px;width:338px;background-image:url("https://www.fadeeac.org.ar/wp-content/uploads/2017/01/double-arrow-up-512.png");background-position:center;background-size:8px;background-repeat:no-repeat;background-color: white;';
 	} else { 
 		if (tipo.id == 'panelLatMinMax'){
 			document.getElementById('miSideBarContent').style.display = 'none';
-			document.getElementById('panelLatMinMax').style.cssText = 'border: 0px solid;border-radius: 2px;height:10px;width:338px;background-image:url("http://www.fadeeac.org.ar/wp-content/uploads/2017/01/double-arrow-down-e1484768866722.png");background-position:center;background-size:8px;background-repeat:no-repeat;background-color: white;';
+			document.getElementById('panelLatMinMax').style.cssText = 'border: 0px solid;border-radius: 2px;height:10px;width:338px;background-image:url("https://www.fadeeac.org.ar/wp-content/uploads/2017/01/double-arrow-down-e1484768866722.png");background-position:center;background-size:8px;background-repeat:no-repeat;background-color: white;';
 		}
 	}
 }
@@ -338,7 +338,7 @@ function geoLocControl(tipo) {
 	var controles = document.createElement('input');
 	controles.type = 'button';
 	controles.id = tipo + 'GeoLoc';
-	controles.style.cssText = 'border: 1px solid Silver;border-radius: 2px;width:25px;height:25px;background-image:url("http://www.fadeeac.org.ar/wp-content/uploads/2017/01/migeoloc.png");background-position:center;background-size:25px;background-color: white;';
+	controles.style.cssText = 'border: 1px solid Silver;border-radius: 2px;width:25px;height:25px;background-image:url("https://www.fadeeac.org.ar/wp-content/uploads/2017/01/migeoloc.png");background-position:center;background-size:25px;background-color: white;';
 	controles.onclick = function(){geoLocUsuario(this);};
 //controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;width:15%;float:right';
 	return controles;
