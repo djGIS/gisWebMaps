@@ -48,7 +48,7 @@ function initClient() {
         scope: SCOPES
     }).then(function () {
           // Listen for sign-in state changes.
-          //gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
           // Handle the initial sign-in state.
           //updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
@@ -67,17 +67,14 @@ function signinStatus(isSignedIn) {
         cargarPOI();
     }
 }
-      /**
-       *  Called when the signed in status changes, to update the UI
-       *  appropriately. After a sign-in, the API is called.
-       */
-     /*function updateSigninStatus(isSignedIn) {
+ 
+function updateSigninStatus(isSignedIn) {
         if (isSignedIn) {
-          authorizeButton.style.display = 'none';
+          //authorizeButton.style.display = 'none';
           //signoutButton.style.display = 'block';
-    //      cargarPOI();
-        } else {
-          authorizeButton.style.display = 'block';
+         cargarPOI();
+    //    } else {
+     //     authorizeButton.style.display = 'block';
           //signoutButton.style.display = 'none';
         }
       }*/
@@ -103,7 +100,7 @@ function signinStatus(isSignedIn) {
        * @param {string} message Text to be placed in pre element.
        */
       function cargarPOI() {
-	  alert("getting data");
+	 // alert("getting data");
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '17uB9MkvDjAUQ84PLvYZTwH2Y_JRFjJ08bvs2QHZYcTg',
           range: 'dbPOI-SIG-FADEEAC!A:V',
