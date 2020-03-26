@@ -236,7 +236,7 @@ function setMarkers(dbPOI) {
 				var latlngset;
 				//alert(estado);
 
-				if (tipo == tipoPOI && estado == 1) {
+				if (tipo == tipoPOI && estado > 0 ) { //== 1) {
 					//alert('lat:' +lat + ' lng:'+lng);
 					latlngset = new google.maps.LatLng(lat, lng);
 					//asignar icono para marcador
