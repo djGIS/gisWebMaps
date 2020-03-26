@@ -125,11 +125,12 @@ function infoCallback(infowindow, marker) {
 	};
 }
 
-function marcador(tipo, latlngset, icono, content, infowindow) { 
+function marcador(tipo, etiqueta, latlngset, icono, content, infowindow) { 
 	var marker = new google.maps.Marker({ 
 		map: map, 
 		title: tipo, 
 		position: latlngset, 
+		label: etiqueta,
 		icon: {
 			url: icono,
 			//size: new google.maps.Size(32, 32),
@@ -234,7 +235,7 @@ function setMarkers(dbPOI) {
 				var fecha_act = dbPOI[i][20];
 				var estado = dbPOI[i][21];
 				var latlngset;
-				//alert(estado);
+				var etiqueta = '';
 
 				if (tipo == tipoPOI && estado > 0 ) { //== 1) {
 					//alert('lat:' +lat + ' lng:'+lng);
@@ -252,6 +253,13 @@ function setMarkers(dbPOI) {
 					switch(clase) {
 						case 'EN RUTA':
 							content = '<div style="width:300px;padding-bottom: 5px"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;"><strong>' + nombre + '</br>' + bandera + '</strong></span></div>';
+							
+							if (estado > 1) {
+								etiqueta = '*';
+								icono = 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/red.png',
+								content += '<div style="width:300px;padding-bottom: 5px"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;"><strong>BRINDA SERVICIO DURANTE LA EMERGENCIA COVID-19</strong></span></div>';
+							}	
+							
 							content += '<div style="width:300px;padding-bottom: 5px"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;">' + direccion + '</br>' + localidad + ', ' + provincia + '</span></div>';
 
 							if(prestacion.length > 0)
@@ -277,7 +285,8 @@ function setMarkers(dbPOI) {
 					}
 
 					content += '<div style="width:300px;text-align:right;"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;">Ultima Actualización: ' + fecha_act + '</span></div>';
-					marcador(tipo, latlngset, icono, content, infowindow);
+					
+					marcador(tipo, etiqueta, latlngset, icono, content, infowindow);
 				} 
 			}
 		}
