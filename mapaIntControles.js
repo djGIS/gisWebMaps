@@ -160,6 +160,7 @@ j++;
 }
 capasContainer.appendChild(t);
 
+/*
 controles = document.createElement('div');
 var texto = document.createTextNode('Estado de Rutas y Restricciones');
 controles.appendChild(texto);
@@ -232,12 +233,13 @@ c.appendChild(controles);
 //capasContainer.appendChild(KMLselector);
 
 capasContainer.appendChild(t);
-
+*/
 controles = document.createElement('div');
 var texto = document.createTextNode('Tramites y Permisos');
 controles.appendChild(texto);
 controles.style.cssText = 'padding-top:5px';//font-weight:bold;font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro;padding-top:5px';
 capasContainer.appendChild(controles); 
+
 
 t = document.createElement('table');
 t.width = '100%';
