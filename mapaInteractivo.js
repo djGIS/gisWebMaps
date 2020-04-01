@@ -29,6 +29,9 @@ function cargarMapa(myCentre, myZoom) {
   };
 
   map = new google.maps.Map(document.getElementById(mapId),mapProp);
+	map.addListener('bounds_changed', function() {
+		setMarkers(dbPOIimport);
+        });
 }
 
 function initialize() {	

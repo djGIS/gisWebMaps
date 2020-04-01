@@ -5,6 +5,7 @@ var infowindow = null;
 var userLocationMarker = null;
 var markers = [];
 var markerCluster;
+var tempMarker = '';
 var POIvisualFormato = [
 	//[CLASE, TIPO, textoMenu, icono, infoWindowTexto],
 	['EN RUTA', 'PEAJE', 'Peajes', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/yellow.png', ' '],
@@ -25,7 +26,7 @@ var POIvisualFormato = [
 	['SERVICIOS', 'TALLER', 'Talleres', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/purple.png', ' ']
 ]; 
 
-//cargar base de datos de POI desde fusion tables
+// Cargar base de datos de POI desde Google Sheets 
 // Client ID and API key from the Developer Console
 
 // Array of API discovery doc URLs for APIs used by the quickstart
@@ -47,16 +48,16 @@ function initClient() {
         discoveryDocs: DISCOVERY_DOCS,
         scope: SCOPES
     }).then(function () {
-          // Listen for sign-in state changes.
-          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+		// Listen for sign-in state changes.
+        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
-          // Handle the initial sign-in state.
-          //updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-		gapi.auth2.getAuthInstance().signIn();
+        // Handle the initial sign-in state.
+        //updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+		//gapi.auth2.getAuthInstance().signIn();
 		signinStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
 		  
-          //authorizeButton.onclick = handleAuthClick;
-          //signoutButton.onclick = handleSignoutClick;
+        //authorizeButton.onclick = handleAuthClick;
+        //signoutButton.onclick = handleSignoutClick;
     }, function(error) {
         alert(JSON.stringify(error, null, 2));
     });
@@ -65,19 +66,21 @@ function initClient() {
 function signinStatus(isSignedIn) {
     if (isSignedIn) {
         cargarPOI();
+	} else {
+		gapi.auth2.getAuthInstance().signIn();
     }
 }
  
 function updateSigninStatus(isSignedIn) {
-        if (isSignedIn) {
-          //authorizeButton.style.display = 'none';
-          //signoutButton.style.display = 'block';
-         cargarPOI();
+    if (isSignedIn) {
+        //authorizeButton.style.display = 'none';
+        //signoutButton.style.display = 'block';
+        cargarPOI();
     //    } else {
      //     authorizeButton.style.display = 'block';
           //signoutButton.style.display = 'none';
-        }
-      }
+    }
+}
 
       //function handleAuthClick(event) {
         //gapi.auth2.getAuthInstance().signIn();
@@ -96,28 +99,29 @@ function updateSigninStatus(isSignedIn) {
        *
        * @param {string} message Text to be placed in pre element.
        */
-      function cargarPOI() {
-	 // alert("getting data");
-        gapi.client.sheets.spreadsheets.values.get({
-          spreadsheetId: '17uB9MkvDjAUQ84PLvYZTwH2Y_JRFjJ08bvs2QHZYcTg',
-          range: 'dbPOI-SIG-FADEEAC!A:V',
-        }).then(function(response) {
-          var dbTemp = response.result;
-          if (dbTemp.values.length > 0) {
-            //appendPre('Name, Major:');
+
+function cargarPOI() {
+	// alert("getting data");
+    
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '17uB9MkvDjAUQ84PLvYZTwH2Y_JRFjJ08bvs2QHZYcTg',
+        range: 'dbPOI-SIG-FADEEAC!A:V',
+    }).then(function(response) {
+        var dbTemp = response.result;
+
+        if (dbTemp.values.length > 0) {
+
 			for (var i = 1; i < dbTemp.values.length; i++) {
 				dbPOIimport.push(dbTemp.values[i]);
-			
-			//	appendPre(row[5] + ', ' + row[10]);
 			}
-			//alert('dbPOI length:' + dbPOIimport.length);
-          } else {
+
+        } else {
             alert('No hay datos cargados.');
-          }
-        }, function(response) {
+        }
+    }, function(response) {
           alert('Error: ' + response.result.error.message);
-        });
-      }
+    });
+}
 
 function infoCallback(infowindow, marker) { 
 	return function() {
@@ -125,7 +129,26 @@ function infoCallback(infowindow, marker) {
 	};
 }
 
-function marcador(tipo, etiqueta, latlngset, icono, content, infowindow) { 
+function marcadorTemp(marker, content) { 
+	if (tempMarker != '')
+		tempMarker.setMap(null);
+	
+	tempMarker = new google.maps.Marker({ 
+		map: map,
+		title: marker.getTitle(),
+		position: marker.getPosition(), 
+		label: marker.getLabel(),
+		icon: marker.getIcon()
+	});
+	var infowindow = new google.maps.InfoWindow();
+	infowindow.setContent(content);
+	infowindow.addListener('close', function() {
+    		tempMarker.setMap(null);
+  	});
+	infowindow.open(map, tempMarker);
+}
+
+function marcador(tipo, etiqueta, latlngset, icono, content) { //, infowindow) { 
 	var marker = new google.maps.Marker({ 
 		map: map, 
 		title: tipo, 
@@ -141,12 +164,17 @@ function marcador(tipo, etiqueta, latlngset, icono, content, infowindow) {
 	});
 	markers.push(marker);
 
+	google.maps.event.addListener(marker, 'click', function() {
+		marcadorTemp(marker, content);
+	});
+	/*
 	google.maps.event.addListener(marker, 'click', (function(marker, content) {
 		return function() {
-			infowindow.setContent(content);
-			infowindow.open(map, marker);
+			marcadorTemp(marker, content);
+			//infowindow.setContent(content);
+			//infowindow.open(map, marker);
 		}
-	})(marker, content));
+	})(marker, content));*/
 
 	var markerRclickContent = document.createElement('div');	
 	
@@ -196,7 +224,7 @@ function marcador(tipo, etiqueta, latlngset, icono, content, infowindow) {
 }
 
 function setMarkers(dbPOI) { 
-	var infowindow = new google.maps.InfoWindow();
+	//var infowindow = new google.maps.InfoWindow();
 	var icono = 'http://maps.google.com/mapfiles/ms/icons/lightblue.png'
 	var content;
 	var POIselector = document.getElementsByName('POIselect');
@@ -205,12 +233,14 @@ function setMarkers(dbPOI) {
 	
 	// Unset all markers
 	if (markers.length != 0) {
-		for(var i=0; i<markers.length; i++) {
+		for(var i = 0; i < markers.length; i++) {
 			markers[i].setMap(null)
 		}
 		markers = [];
 	}
-
+	var mapBounds = new google.maps.LatLngBounds();
+	mapBounds = map.getBounds();
+	
 	for (x = 0; x < POIselector.length; x++) {
 		if (POIselector[x].checked == true) {
 			var tipoPOI = POIselector[x].value;
@@ -286,7 +316,10 @@ function setMarkers(dbPOI) {
 
 					content += '<div style="width:300px;text-align:right;"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;">Ultima Actualización: ' + fecha_act + '</span></div>';
 					
-					marcador(tipo, etiqueta, latlngset, icono, content, infowindow);
+					
+					if (mapBounds.contains(latlngset)) {
+						marcador(tipo, etiqueta, latlngset, icono, content); //, infowindow);
+					}
 				} 
 			}
 		}
