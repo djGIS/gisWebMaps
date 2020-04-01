@@ -142,7 +142,7 @@ function marcadorTemp(marker, content) {
 	});
 	var infowindow = new google.maps.InfoWindow();
 	infowindow.setContent(content);
-	infowindow.addListener('close', function() {
+	infowindow.addListener('closeclick', function() {
     		tempMarker.setMap(null);
   	});
 	infowindow.open(map, tempMarker);
