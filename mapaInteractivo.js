@@ -29,9 +29,12 @@ function cargarMapa(myCentre, myZoom) {
   };
 
   map = new google.maps.Map(document.getElementById(mapId),mapProp);
+	google.maps.event.addListenerOnce(map, 'bounds_changed', function() {
+		geoLocUsuario(null);
+    });
 	map.addListener('bounds_changed', function() {
 		setMarkers(dbPOIimport);
-        });
+    });
 }
 
 function initialize() {	
