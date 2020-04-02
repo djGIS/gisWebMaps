@@ -126,7 +126,7 @@ function capasControls() {
 	c = r.insertCell(0);
 	POIselector = document.createElement('input');
 	POIselector.type = 'checkbox';
-	POIselector.name = 'POIselect';
+	POIselector.name = 'POIselectEst';
 	POIselector.value = 'EMERGENCIA'; //POIvisualFormato[j][1];
 	POIselector.checked = true;
 	POIselector.onclick = function(){setMarkers(dbPOIimport);};
@@ -198,18 +198,16 @@ function capasControls() {
 	}
 	capasContainer.appendChild(t);
 
-/*
+	/*
 controles = document.createElement('div');
 var texto = document.createTextNode('Estado de Rutas y Restricciones');
 controles.appendChild(texto);
 controles.style.cssText = 'padding-top:5px';//font-weight:bold;font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro;
 capasContainer.appendChild(controles); 
-
 var KMLselector = document.createElement('select');
 var c, r, t;
 t = document.createElement('table');
 r = t.insertRow(0); 
-
 c = r.insertCell(0);
 KMLselector = document.createElement('input');
 KMLselector.type = 'checkbox';
@@ -217,16 +215,13 @@ KMLselector.name = 'selectKML';
 KMLselector.value = 'RTP CABA';
 KMLselector.onclick = function(){cargarCapaKML();};
 c.appendChild(KMLselector);
-
 c = r.insertCell(1);
 controles = document.createElement('span');
 var texto = document.createTextNode('Red de Tránsito Pesado');
 controles.appendChild(texto);
 //controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
 c.appendChild(controles);
-
 r = t.insertRow(1); 
-
 c = r.insertCell(0);
 KMLselector = document.createElement('input');
 KMLselector.type = 'checkbox';
@@ -234,16 +229,13 @@ KMLselector.name = 'selectKML';
 KMLselector.value = 'RFS ANSV';
 KMLselector.onclick = function(){cargarCapaKML();};
 c.appendChild(KMLselector);
-
 c = r.insertCell(1);
 controles = document.createElement('span');
 var texto = document.createTextNode('Restricciones de Tránsito');
 controles.appendChild(texto);
 //controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
 c.appendChild(controles);
-
 r = t.insertRow(2); 
-
 c = r.insertCell(0);
 KMLselector = document.createElement('input');
 KMLselector.type = 'checkbox';
@@ -251,14 +243,12 @@ KMLselector.name = 'selectKML';
 KMLselector.value = 'ER DNV';
 KMLselector.onclick = function(){cargarCapaKML();};
 c.appendChild(KMLselector);
-
 c = r.insertCell(1);
 controles = document.createElement('span');
 var texto = document.createTextNode('Estado de Rutas - DNV');
 controles.appendChild(texto);
 //controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
 c.appendChild(controles);
-
 //KMLselector.id = 'selectKML';
 //KMLselector.multiple = 'true';
 //KMLselector.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;width:100%';
@@ -269,7 +259,6 @@ c.appendChild(controles);
 //KMLselector.options[3] = new Option('Advertencias - FADEEAC', 'Warnings');
 //KMLselector.options[4] = new Option('TMDA', 'TMDA DNV');
 //capasContainer.appendChild(KMLselector);
-
 capasContainer.appendChild(t);
 */
 controles = document.createElement('div');
