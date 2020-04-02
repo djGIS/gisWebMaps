@@ -175,6 +175,8 @@ function capasControls() {
 		POIselector.type = 'checkbox';
 		POIselector.name = 'POIselect';
 		POIselector.value = POIvisualFormato[j][1];
+		if (POIvisualFormato[j][1] == 'ESTACION DE SERVICIO')
+			POIselector.checked = true;
 		POIselector.onclick = function(){setMarkers(dbPOIimport);};
 		c.appendChild(POIselector);
 
