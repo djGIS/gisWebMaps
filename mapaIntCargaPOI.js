@@ -222,7 +222,6 @@ function marcador(tipo, etiqueta, latlngset, icono, content) { //, infowindow) {
 		}
 	})(marker, markerRclickContent));
 }
-
 function setMarkers(dbPOI) { 
 	//var infowindow = new google.maps.InfoWindow();
 	var icono = 'http://maps.google.com/mapfiles/ms/icons/lightblue.png'
@@ -242,10 +241,11 @@ function setMarkers(dbPOI) {
 	mapBounds = map.getBounds();
 	
 	var POIestado = 0;
-	if (POIselector[0].checked == true)
+	var POIselectEst = document.getElementsByName('POIselectEst');
+	if (POIselectEst[0].checked == true)
 		POIestado = 1;
 	
-	for (x = 1; x < POIselector.length; x++) {
+	for (x = 0; x < POIselector.length; x++) {
 		if (POIselector[x].checked == true) {
 			var tipoPOI = POIselector[x].value;
 
