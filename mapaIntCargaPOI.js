@@ -14,7 +14,7 @@ var POIvisualFormato = [
 	['EN RUTA', 'CAJON AZUL', 'Cajones Azules CABA', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/lightblue.png', ' '],
 	['EN RUTA', 'PARQUE INDUSTRIAL', 'Parques Industriales','https://www.fadeeac.org.ar/wp-content/uploads/2020/03/purple.png', ' '],
 	['EN RUTA', 'TERMINALES PORTURIAS', 'Terminales Portuarias','https://www.fadeeac.org.ar/wp-content/uploads/2020/03/purple.png', ' '],
-	['PERMISOS', 'RTO/VTV', 'Revisión Técnica', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/blue.png', ' '],
+	['PERMISOS', 'RTO/VTV', 'Revisión Técnica', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/lightblue.png', ' '],
 	['PERMISOS', 'RUTA', 'RUTA', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/lightblue.png', ' '],
 	['PERMISOS', 'FPT', 'LNH/Cursos COAP', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/lightblue.png', ' '],
 	['PERMISOS', 'PSICOFISICO', 'Examen Psicofisico', 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/lightblue.png', ' '],
@@ -142,7 +142,7 @@ function marcadorTemp(marker, content) {
 	});
 	var infowindow = new google.maps.InfoWindow();
 	infowindow.setContent(content);
-	infowindow.addListener('close', function() {
+	infowindow.addListener('closeclick', function() {
     		tempMarker.setMap(null);
   	});
 	infowindow.open(map, tempMarker);
@@ -222,7 +222,6 @@ function marcador(tipo, etiqueta, latlngset, icono, content) { //, infowindow) {
 		}
 	})(marker, markerRclickContent));
 }
-
 function setMarkers(dbPOI) { 
 	//var infowindow = new google.maps.InfoWindow();
 	var icono = 'http://maps.google.com/mapfiles/ms/icons/lightblue.png'
@@ -240,6 +239,11 @@ function setMarkers(dbPOI) {
 	}
 	var mapBounds = new google.maps.LatLngBounds();
 	mapBounds = map.getBounds();
+	
+	var POIestado = 0;
+	var POIselectEst = document.getElementsByName('POIselectEst');
+	if (POIselectEst[0].checked == true)
+		POIestado = 1;
 	
 	for (x = 0; x < POIselector.length; x++) {
 		if (POIselector[x].checked == true) {
@@ -267,7 +271,7 @@ function setMarkers(dbPOI) {
 				var latlngset;
 				var etiqueta = '';
 
-				if (tipo == tipoPOI && estado > 0 ) { //== 1) {
+				if (tipo == tipoPOI && estado > POIestado) { //== 1) {
 					//alert('lat:' +lat + ' lng:'+lng);
 					latlngset = new google.maps.LatLng(lat, lng);
 					//asignar icono para marcador
@@ -287,7 +291,7 @@ function setMarkers(dbPOI) {
 							if (estado > 1) {
 								etiqueta = '*';
 								icono = 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/red.png',
-								content += '<div style="width:300px;padding-bottom: 5px"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;"><strong>BRINDA SERVICIO DURANTE LA EMERGENCIA COVID-19</strong></span></div>';
+								content += '<div style="width:300px;padding-bottom: 5px"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;color:Green;"><strong>BRINDA SERVICIO DURANTE LA EMERGENCIA COVID-19</strong></span></div>';
 							}	
 							
 							content += '<div style="width:300px;padding-bottom: 5px"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;">' + direccion + '</br>' + localidad + ', ' + provincia + '</span></div>';

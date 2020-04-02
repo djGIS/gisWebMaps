@@ -106,72 +106,108 @@ function panelMinMax(tipo) {
 }
 
 function capasControls() {
-var capasContainer = document.createElement('div');
-capasContainer.id = 'controlCapas';
-//capasContainer.style.display = 'none'; 
-//capasContainer.style.height = '385px'; 
-//capasContainer.style.overflowY = 'scroll'; 
+	var capasContainer = document.createElement('div');
+	capasContainer.id = 'controlCapas';
+	//capasContainer.style.display = 'none'; 
+	//capasContainer.style.height = '385px'; 
+	//capasContainer.style.overflowY = 'scroll'; 
 
-var controles = document.createElement('div');
-var texto = document.createTextNode('Puntos de Interés');
-controles.appendChild(texto);
-//controles.style.cssText = 'font-weight:bold;font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro;padding-top:5px';
-capasContainer.appendChild(controles); 
+	var controles = document.createElement('div');
+	var texto = document.createTextNode('');
+	var POIselector;
+	var c, r, t;
+	
+	// selector para POI habilitados durante emergencia
+	t = document.createElement('table');
+	t.id = 'tablaEMERGENCIA';
+	t.width = '100%';
+	r = t.insertRow(0);
+	
+	c = r.insertCell(0);
+	POIselector = document.createElement('input');
+	POIselector.type = 'checkbox';
+	POIselector.name = 'POIselectEst';
+	POIselector.value = 'EMERGENCIA'; //POIvisualFormato[j][1];
+	POIselector.checked = true;
+	POIselector.onclick = function(){setMarkers(dbPOIimport);};
+	c.appendChild(POIselector);
 
-var POIselector;
-var c, r, t;
-t = document.createElement('table');
-t.id = 'tablaENRUTA';
-t.width = '100%';
+	c = r.insertCell(1);
+	c.width = '78%';
+	controles = document.createElement('span');
+	texto = document.createTextNode('Emergencia COVID-19: Servicios Activos');
+	controles.appendChild(texto);
+	controles.style.cssText = 'color:Red';
+	//'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
+	c.appendChild(controles);
 
-//POIvisualFormato = [
-//[CLASE, TIPO, textoMenu, icono, infoWindowTexto],
-var i = 0;
-var j = 0;
-//for (var i = 0; i < POIvisualFormato.length; i ++) {
-while (POIvisualFormato[j][0] == 'EN RUTA') {
-r = t.insertRow(i); 
+	c = r.insertCell(2);
+	controles = document.createElement('img');
+	controles.src = 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/red.png';
+	controles.setAttribute('width', '50%');
+	controles.setAttribute('height', '50%');
+	c.appendChild(controles);
 
-c = r.insertCell(0);
-POIselector = document.createElement('input');
-POIselector.type = 'checkbox';
-POIselector.name = 'POIselect';
-POIselector.value = POIvisualFormato[j][1];
-POIselector.onclick = function(){setMarkers(dbPOIimport);};
-c.appendChild(POIselector);
+	capasContainer.appendChild(t);
+	
+	controles = document.createElement('div');
+	texto = document.createTextNode('Puntos de Interés');
+	controles.appendChild(texto);
+	//controles.style.cssText = 'font-weight:bold;font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro;padding-top:5px';
+	capasContainer.appendChild(controles); 
+	
+	// POI clase EN RUTA
+	t = document.createElement('table');
+	t.id = 'tablaENRUTA';
+	t.width = '100%';
 
-c = r.insertCell(1);
-c.width = '78%';
-controles = document.createElement('span');
-var texto = document.createTextNode(POIvisualFormato[j][2]);
-controles.appendChild(texto);
-//controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
-c.appendChild(controles);
+	//POIvisualFormato = [
+	//[CLASE, TIPO, textoMenu, icono, infoWindowTexto],
+	var i = 0;
+	var j = 0;
+	//for (var i = 0; i < POIvisualFormato.length; i ++) {
+	
+	while (POIvisualFormato[j][0] == 'EN RUTA') {
+		r = t.insertRow(i); 
 
-c = r.insertCell(2);
-controles = document.createElement('img');
-controles.src = POIvisualFormato[j][3];
-controles.setAttribute('width', '50%');
-controles.setAttribute('height', '50%');
-c.appendChild(controles);
+		c = r.insertCell(0);
+		POIselector = document.createElement('input');
+		POIselector.type = 'checkbox';
+		POIselector.name = 'POIselect';
+		POIselector.value = POIvisualFormato[j][1];
+		POIselector.onclick = function(){setMarkers(dbPOIimport);};
+		c.appendChild(POIselector);
 
-i++;
-j++;
-}
-capasContainer.appendChild(t);
+		c = r.insertCell(1);
+		c.width = '78%';
+		controles = document.createElement('span');
+		var texto = document.createTextNode(POIvisualFormato[j][2]);
+		controles.appendChild(texto);
+		//controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
+		c.appendChild(controles);
 
-/*
+		c = r.insertCell(2);
+		controles = document.createElement('img');
+		controles.src = POIvisualFormato[j][3];
+		controles.setAttribute('width', '50%');
+		controles.setAttribute('height', '50%');
+		c.appendChild(controles);
+
+		i++;
+		j++;
+	}
+	capasContainer.appendChild(t);
+
+	/*
 controles = document.createElement('div');
 var texto = document.createTextNode('Estado de Rutas y Restricciones');
 controles.appendChild(texto);
 controles.style.cssText = 'padding-top:5px';//font-weight:bold;font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro;
 capasContainer.appendChild(controles); 
-
 var KMLselector = document.createElement('select');
 var c, r, t;
 t = document.createElement('table');
 r = t.insertRow(0); 
-
 c = r.insertCell(0);
 KMLselector = document.createElement('input');
 KMLselector.type = 'checkbox';
@@ -179,16 +215,13 @@ KMLselector.name = 'selectKML';
 KMLselector.value = 'RTP CABA';
 KMLselector.onclick = function(){cargarCapaKML();};
 c.appendChild(KMLselector);
-
 c = r.insertCell(1);
 controles = document.createElement('span');
 var texto = document.createTextNode('Red de Tránsito Pesado');
 controles.appendChild(texto);
 //controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
 c.appendChild(controles);
-
 r = t.insertRow(1); 
-
 c = r.insertCell(0);
 KMLselector = document.createElement('input');
 KMLselector.type = 'checkbox';
@@ -196,16 +229,13 @@ KMLselector.name = 'selectKML';
 KMLselector.value = 'RFS ANSV';
 KMLselector.onclick = function(){cargarCapaKML();};
 c.appendChild(KMLselector);
-
 c = r.insertCell(1);
 controles = document.createElement('span');
 var texto = document.createTextNode('Restricciones de Tránsito');
 controles.appendChild(texto);
 //controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
 c.appendChild(controles);
-
 r = t.insertRow(2); 
-
 c = r.insertCell(0);
 KMLselector = document.createElement('input');
 KMLselector.type = 'checkbox';
@@ -213,14 +243,12 @@ KMLselector.name = 'selectKML';
 KMLselector.value = 'ER DNV';
 KMLselector.onclick = function(){cargarCapaKML();};
 c.appendChild(KMLselector);
-
 c = r.insertCell(1);
 controles = document.createElement('span');
 var texto = document.createTextNode('Estado de Rutas - DNV');
 controles.appendChild(texto);
 //controles.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;color:Gainsboro';
 c.appendChild(controles);
-
 //KMLselector.id = 'selectKML';
 //KMLselector.multiple = 'true';
 //KMLselector.style.cssText = 'font-family:arial,helvetica,sans-serif;font-size:10pt;width:100%';
@@ -231,7 +259,6 @@ c.appendChild(controles);
 //KMLselector.options[3] = new Option('Advertencias - FADEEAC', 'Warnings');
 //KMLselector.options[4] = new Option('TMDA', 'TMDA DNV');
 //capasContainer.appendChild(KMLselector);
-
 capasContainer.appendChild(t);
 */
 controles = document.createElement('div');
