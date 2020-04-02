@@ -66,6 +66,11 @@ function initClient() {
 function signinStatus(isSignedIn) {
     if (isSignedIn) {
         cargarPOI();
+		try {
+  			setMarkers(dbPOIimport);
+		} catch(error) {
+  			console.error(error);
+		} 
 	} else {
 		gapi.auth2.getAuthInstance().signIn();
     }
@@ -76,6 +81,11 @@ function updateSigninStatus(isSignedIn) {
         //authorizeButton.style.display = 'none';
         //signoutButton.style.display = 'block';
         cargarPOI();
+		try {
+  			setMarkers(dbPOIimport);
+		} catch(error) {
+  			console.error(error);
+		} 
     //    } else {
      //     authorizeButton.style.display = 'block';
           //signoutButton.style.display = 'none';
@@ -222,6 +232,7 @@ function marcador(tipo, etiqueta, latlngset, icono, content) { //, infowindow) {
 		}
 	})(marker, markerRclickContent));
 }
+
 function setMarkers(dbPOI) { 
 	//var infowindow = new google.maps.InfoWindow();
 	var icono = 'http://maps.google.com/mapfiles/ms/icons/lightblue.png'
