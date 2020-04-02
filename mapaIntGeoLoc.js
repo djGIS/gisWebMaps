@@ -15,7 +15,7 @@ function geolocationSuccess(position) {
 	var usuarioLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
 	if (geoLocFuente == 'mapa') {
-		map.setZoom(15);
+		map.setZoom(12);
 		map.setCenter(usuarioLatLng);
 	} else if (geoLocFuente == 'direccion') {
 		document.getElementById(geoLocFuente).value = 'LatLng' + usuarioLatLng;
@@ -37,8 +37,12 @@ function geoLocUsuario(fuente) {
 		timeout: 10 * 1000 // 10 seconds
 	};
 	
-	var fuenteId = fuente.id;
-	geoLocFuente = fuenteId.substring(0, fuenteId.length - 6);
+	if (fuente == null) {
+		geoLocFuente = 'mapa';
+	} else {	
+		var fuenteId = fuente.id;
+		geoLocFuente = fuenteId.substring(0, fuenteId.length - 6);
+	}	
 	
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, positionOptions);
