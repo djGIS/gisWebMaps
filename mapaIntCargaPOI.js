@@ -241,7 +241,11 @@ function setMarkers(dbPOI) {
 	var mapBounds = new google.maps.LatLngBounds();
 	mapBounds = map.getBounds();
 	
-	for (x = 0; x < POIselector.length; x++) {
+	var POIestado = 0;
+	if (POIselector[0].checked == true)
+		POIestado = 1;
+	
+	for (x = 1; x < POIselector.length; x++) {
 		if (POIselector[x].checked == true) {
 			var tipoPOI = POIselector[x].value;
 
@@ -267,7 +271,7 @@ function setMarkers(dbPOI) {
 				var latlngset;
 				var etiqueta = '';
 
-				if (tipo == tipoPOI && estado > 0 ) { //== 1) {
+				if (tipo == tipoPOI && estado > POIestado) { //== 1) {
 					//alert('lat:' +lat + ' lng:'+lng);
 					latlngset = new google.maps.LatLng(lat, lng);
 					//asignar icono para marcador
@@ -287,7 +291,7 @@ function setMarkers(dbPOI) {
 							if (estado > 1) {
 								etiqueta = '*';
 								icono = 'https://www.fadeeac.org.ar/wp-content/uploads/2020/03/red.png',
-								content += '<div style="width:300px;padding-bottom: 5px"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;"><strong>BRINDA SERVICIO DURANTE LA EMERGENCIA COVID-19</strong></span></div>';
+								content += '<div style="width:300px;padding-bottom: 5px"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;color:Green;"><strong>BRINDA SERVICIO DURANTE LA EMERGENCIA COVID-19</strong></span></div>';
 							}	
 							
 							content += '<div style="width:300px;padding-bottom: 5px"><span style="font-family: arial,helvetica,sans-serif;font-size: 9pt;">' + direccion + '</br>' + localidad + ', ' + provincia + '</span></div>';
