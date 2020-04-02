@@ -128,8 +128,12 @@ function capasControls() {
 	POIselector.type = 'checkbox';
 	POIselector.name = 'POIselectEst';
 	POIselector.value = 'EMERGENCIA'; //POIvisualFormato[j][1];
-	POIselector.checked = true;
-	POIselector.onclick = function(){setMarkers(dbPOIimport);};
+	//POIselector.checked = true;
+	POIselector.onclick = function(){
+		var temp = document.getElementsByName('POIselect');
+		temp[1].checked = true;
+		setMarkers(dbPOIimport);
+	};
 	c.appendChild(POIselector);
 
 	c = r.insertCell(1);
@@ -175,8 +179,7 @@ function capasControls() {
 		POIselector.type = 'checkbox';
 		POIselector.name = 'POIselect';
 		POIselector.value = POIvisualFormato[j][1];
-		if (POIvisualFormato[j][1] == 'ESTACION DE SERVICIO')
-			POIselector.checked = true;
+
 		POIselector.onclick = function(){setMarkers(dbPOIimport);};
 		c.appendChild(POIselector);
 
